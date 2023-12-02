@@ -1,0 +1,51 @@
+Admin:
+    Login,
+    View news,
+    See his profile info,
+    Add user(role),
+    Delete user,
+    Update user,
+    Accept or Refuse news,
+    Search for editors Profile,
+    Search news by (date, editor name),
+    (Like, dislike, comment, saved post) on news
+
+
+Editors:
+    Login,
+    View news,
+    See his profile info,
+    Edit Profile info(pass, photo),
+    Write post,
+    Manage his posts (edit),
+    Answer viewers’ questions,
+    See his posts (in his profile),
+    Search for editors Profile,
+    Search news by (date, editor name),
+    (Like, dislike, comment, saved post) on news
+
+
+Viewers:
+    SignUp,
+    Login,
+    View news,
+    See his profile info,
+    Edit Profile info(name, pass, photo, phone number),
+    Search for editors Profile,
+    Search news by (date, editor name),
+    (Like, dislike, comment, saved post) on news
+
+
+Not Registered:
+    View news,
+    Search for editors Profile,
+    Search news by (date, editor name)
+
+
+/*
+Admin can create admin
+
+Answer viewers’ questions => (all posts or his posts)
+
+SignUp => Viewers
+*/
