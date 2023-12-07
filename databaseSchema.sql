@@ -34,13 +34,16 @@ CREATE TABLE post (
     FOREIGN KEY (postType) REFERENCES  postTypes(id) ON DELETE SET NULL,
     FOREIGN KEY (ownerId) REFERENCES  users(id)  ON DELETE CASCADE
 );
-
 CREATE TABLE comments (
+    commentId INT PRIMARY KEY AUTO_INCREMENT,
     postId INT NOT NULL,
     userId INT NOT NULL,
     comment VARCHAR(1024) NOT NULL,
-    FOREIGN KEY (postId) REFERENCES  post(postId) ON DELETE CASCADE,
-    FOREIGN KEY (userId) REFERENCES  users(id) ON DELETE CASCADE
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    parentCommentId INT,
+    FOREIGN KEY (postId) REFERENCES post(postId) ON DELETE CASCADE,
+    FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (parentCommentId) REFERENCES comments(commentId) ON DELETE CASCADE
 );
 
 CREATE TABLE savedPost (
