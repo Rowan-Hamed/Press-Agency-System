@@ -26,6 +26,7 @@ CREATE TABLE post (
     (if there is 10000 post and we write the postType in string this will cost a lot of memory 
     but with another table we write the string only once and after that we use int references) */
     numViews INT DEFAULT 0,
+    status INT,
     urlToPhoto VARCHAR(255) DEFAULT NULL,
     likesNum INT DEFAULT 0,
     dislikesNum INT DEFAULT 0,
