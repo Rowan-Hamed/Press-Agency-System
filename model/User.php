@@ -13,8 +13,6 @@ class User
     private $photoURL;
     private $userCon;
 //--------------------------------------------
-
-    //contractor for create conection
     function __construct()
     {
         $this->userCon = new database();
