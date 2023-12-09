@@ -2,6 +2,5 @@
 $host = 'localhost';
 $dbUser= 'root';
 $dbPass = '';
-
-$dbName = 'db_sw1';
+$dbName = 'PRESS_AGENCY';
 ?>
