@@ -25,7 +25,7 @@
                                       <div class="col-md-6 mb-4">
                       
                                         <div class="form-outline">
-                                          <input type="text" id="firstName" class="form-control form-control-lg" placeholder="First_Name" required/>
+                                          <input type="text" id="firstName" class="form-control form-control-lg" placeholder="First_Name" required name="first_name"/>
                                           <label class="form-label" for="firstName">First Name</label>
                                         </div>
                       
@@ -33,7 +33,7 @@
                                       <div class="col-md-6 mb-4">
                       
                                         <div class="form-outline">
-                                          <input type="text" id="lastName" class="form-control form-control-lg" placeholder="Last_Name" required />
+                                          <input type="text" id="lastName" class="form-control form-control-lg" placeholder="Last_Name" required name="last_name" />
                                           <label class="form-label" for="lastName">Last Name</label>
                                         </div>
                       
@@ -44,7 +44,7 @@
                                       <div class="col-md-6 mb-4 d-flex align-items-center">
                       
                                         <div class="form-outline datepicker w-100">
-                                          <input type="text" class="form-control form-control-lg" id="birthdayDate" placeholder="Birthday" required/>
+                                          <input type="text" class="form-control form-control-lg" id="birthdayDate" placeholder="Birthday" required name="birthdayDate"/>
                                           <label for="birthdayDate" class="form-label">Birthday</label>
                                         </div>
                       
@@ -78,7 +78,7 @@
                                       <div class="col-md-6 mb-4 pb-2">
                       
                                         <div class="form-outline">
-                                          <input type="email" id="emailAddress" class="form-control form-control-lg"  placeholder="Email" required/>
+                                          <input type="email" id="emailAddress" class="form-control form-control-lg"  placeholder="Email" required name="email"/>
                                           <label class="form-label" for="emailAddress">Email</label>
                                         </div>
                       
@@ -86,7 +86,7 @@
                                       <div class="col-md-6 mb-4 pb-2">
                       
                                         <div class="form-outline">
-                                          <input type="tel" id="phoneNumber" class="form-control form-control-lg" placeholder="phone_Number" required/>
+                                          <input type="tel" id="phoneNumber" class="form-control form-control-lg" placeholder="phone_Number" required name="phone_Number"/>
                                           <label class="form-label" for="phoneNumber">Phone Number</label>
                                         </div>
                       
