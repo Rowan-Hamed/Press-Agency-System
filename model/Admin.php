@@ -55,6 +55,7 @@ class Admin extends User{
             postId = $postId;
         ";
         parent::$userCon->update($sql);
+    
     }
 
     static function deletePost($postId){
