@@ -9,6 +9,8 @@
 </head>
 <body>
      
+<?php include ("../assets/navBar/navBar.php"); ?>
+
 
     
                     <section class="vh-100 gradient-custom">

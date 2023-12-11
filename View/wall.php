@@ -7,6 +7,9 @@
     <title>Press Agency</title>
 </head>
 <body>
+    
+<?php include ("../assets/navBar/navBar.php"); ?>
+
      <header>
         <div class="logo">Press Agency</div>
         <div class="toggle"></div>

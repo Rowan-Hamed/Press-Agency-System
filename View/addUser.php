@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['userType']) || strtolower($_SESSION['userType']) !== "admin") {
+  header('Location: profile.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,9 +86,12 @@
   </style>
 </head>
 <body>
+
+    <?php include ("../assets/navBar/navBar.php"); ?>
+
   <div class="signup-container">
     <h2>ADD USER</h2>
-    <form action="#" method="post">
+    <form action="../controller/addUser_controller.php" method="post" enctype="multipart/form-data">
       <div class="form-group horizontal">
         <div class="half-width">
           <label for="first-name">First Name</label>
@@ -102,14 +113,19 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
         <label for="profile-image">Profile Image</label>
         <input type="file" id="profile-image" name="profile-image" accept="image/*">
       </div>
       <div class="form-group">
         <label for="user-role">User Role</label>
         <select id="user-role" name="user-role" required>
-          <option value="editor">Editor</option>
-          <option value="viewer">Viewer</option>
+          <option disabled selected>choose role...</option>
+          <option value="Editor">Editor</option>
+          <option value="Viewer">Viewer</option>
         </select>
       </div>
       <button type="submit" class="submit-btn">Add User</button>
