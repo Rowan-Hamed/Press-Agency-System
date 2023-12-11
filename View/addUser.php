@@ -4,6 +4,21 @@ session_start();
 if(!isset($_SESSION['userType']) || strtolower($_SESSION['userType']) !== "admin") {
   header('Location: profile.php');
 }
+
+$fname = $lname = $email = $phone = $error = "";
+
+if(isset($_SESSION['error-message'])) {
+  $fname = $_SESSION['old-fname'];
+  $lname = $_SESSION['old-lname'];
+  $email = $_SESSION['old-email'];
+  $phone = $_SESSION['old-phone'];
+  $error = $_SESSION['error-message'];
+  unset($_SESSION['old-fname']);
+  unset($_SESSION['old-lname']);
+  unset($_SESSION['old-email']);
+  unset($_SESSION['old-phone']);
+  unset($_SESSION['error-message']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -95,21 +110,22 @@ if(!isset($_SESSION['userType']) || strtolower($_SESSION['userType']) !== "admin
       <div class="form-group horizontal">
         <div class="half-width">
           <label for="first-name">First Name</label>
-          <input type="text" id="first-name" name="first-name" required>
+          <input value="<?php echo $fname?>" type="text" id="first-name" name="first-name" required>
         </div>
         <div class="half-width">
           <label for="last-name">Last Name</label>
-          <input type="text" id="last-name" name="last-name" required>
+          <input value="<?php echo $lname?>" type="text" id="last-name" name="last-name" required>
         </div>
       </div>
+      <h3 style = "color: red"> <?php echo $error?> </h3>
       <div class="form-group horizontal">
         <div class="half-width">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <input value="<?php echo $email?>" type="text" id="email" name="email" required>
         </div>
         <div class="half-width">
           <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" required>
+          <input value="<?php echo $phone?>" type="tel" id="phone" name="phone" required>
         </div>
       </div>
       <div class="form-group">
@@ -123,12 +139,12 @@ if(!isset($_SESSION['userType']) || strtolower($_SESSION['userType']) !== "admin
       <div class="form-group">
         <label for="user-role">User Role</label>
         <select id="user-role" name="user-role" required>
-          <option disabled selected>choose role...</option>
-          <option value="Editor">Editor</option>
+          <option value="" disabled selected>choose role...</option>
           <option value="Viewer">Viewer</option>
+          <option value="Editor">Editor</option>
         </select>
       </div>
-      <button type="submit" class="submit-btn">Add User</button>
+      <button type="submit" name="submit" class="submit-btn">Add User</button>
     </form>
   </div>
 </body>

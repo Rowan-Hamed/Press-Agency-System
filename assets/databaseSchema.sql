@@ -11,20 +11,13 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL, 
     urlToPhoto VARCHAR(255) DEFAULT NULL
 );
-CREATE TABLE postTypes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    typeName VARCHAR(255)
-);
 
 CREATE TABLE post (
     postId INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) CHARACTER SET utf8mb4, -- 'utf8mb4' to allows us to write in Arabic  
     body VARCHAR(2048) CHARACTER SET utf8mb4,
     creationTime DATE DEFAULT CURRENT_DATE,
-    postType INT,                           
-    /*we used another table to lower the memory coast 
-    (if there is 10000 post and we write the postType in string this will cost a lot of memory 
-    but with another table we write the string only once and after that we use int references) */
+    postType VARCHAR(255),
     numViews INT DEFAULT 0,
     status INT DEFAULT 0,
     urlToPhoto VARCHAR(255) DEFAULT NULL,

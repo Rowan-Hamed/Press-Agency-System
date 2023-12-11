@@ -3,15 +3,15 @@
 include ('../model/db/DatabaseClass.php');
 class User 
 {
-    protected  $id;
-    protected  $fName;
-    protected  $lname;
-    protected  $userType;
-    protected  $email;
-    protected  $password;
-    protected  $phoneNum;
-    protected  $urlToPhoto;
-    protected  $userCon;
+    private  $id;
+    private  $fName;
+    private  $lname;
+    private  $userType;
+    private  $email;
+    private  $password;
+    private  $phoneNum;
+    private  $urlToPhoto;
+    private  $userCon;
 //--------------------------------------------
     function __construct()
     {
