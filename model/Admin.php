@@ -3,7 +3,7 @@ include ('../model/db/DatabaseClass.php');
 include ('../model/User.php');
 class Admin extends User{
 
-    static function addUser($fName,$lname,$userType,$email,$password,$phoneNum,$urlToPhoto){
+    public function addUser($fName,$lname,$userType,$email,$password,$phoneNum,$urlToPhoto){
         $sql = "
         INSERT INTO 'users' ('userType', 'fname', 
         'lname', 'email', 'phoneNum', 'password', 'urlToPhoto') 
@@ -12,12 +12,12 @@ class Admin extends User{
         $res = parent::$userCon->insert($sql);
         return true;
     }
-    static function deleteUser($userId){
+    public function deleteUser($userId){
         $sql = "DELETE FROM users WHERE id = userId";
         return parent::$userCon->delete($sql);
     }
 
-    static function updateUSer($userId,$fName,$lname,$userType,$email,$password,$phoneNum,$urlToPhoto){
+    public function updateUSer($userId,$fName,$lname,$userType,$email,$password,$phoneNum,$urlToPhoto){
             $sql = "
                     UPDATE users
                     SET
@@ -33,7 +33,7 @@ class Admin extends User{
             $res = parent::$userCon->update($sql);
     }
 
-    static function acceptPost($postId){
+    public function acceptPost($postId){
         $sql =
         "
         UPDATE post
@@ -45,7 +45,7 @@ class Admin extends User{
         parent::$userCon->update($sql);
     }
 
-    static function refusePost($postId){
+    public function refusePost($postId){
         $sql =
         "
         UPDATE post
@@ -55,14 +55,13 @@ class Admin extends User{
             postId = $postId;
         ";
         parent::$userCon->update($sql);
-    
     }
 
-    static function deletePost($postId){
+    public function deletePost($postId){
         $sql = "DELETE FROM post WHERE id = $postId";
         return parent::$userCon->delete($sql);
     }
-    static function updatePost($postID,$title,$body,$status,$postType,$urlToPhoto){
+    public function updatePost($postID,$title,$body,$status,$postType,$urlToPhoto){
         $sql="
         UPDATE post
         SET
