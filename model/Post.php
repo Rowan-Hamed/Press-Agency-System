@@ -34,16 +34,12 @@ class Post {
         $this->urlToPhoto = $row['urlToPhoto'];
         $this->likesNum = $row['likesNum'];
         $this->dislikesNum = $row['dislikesNum'];
+        $this->postType = $row['typeName'];
         
         //owner will return the name of the owner not the id
         $sql = "SELECT fname, lname FROM users WHERE id = $row[ownerId]";
         $res = $this->postCon->select($sql);
         $this->owner =$name =  $res['fname'] . ' ' . $res['lname'];        ;
-        
-        //same thing for the post type
-        $sql = "SELECT typeName FROM postTypes WHERE id = $row[postType]";
-        $res = $this->postCon->select($sql);
-        $this->postType = $res['typeName'];
         
     }
 
@@ -97,25 +93,7 @@ class Post {
     }
 
     public function setPostType($value) {
-        /*
-        check if this postType has an id in postTypes table if not 
-        it will create one
-        */
-        $sql = "SELECT id FROM postTypes WHERE typeName = '$value'";
-        $res = $this->postCon->select($sql); 
-    
-        if ($res) {
-            $this->updateAtt('postType', $res['id']);
-            return true;
-        } else {
-            $sql = "INSERT INTO postTypes (typeName) VALUES ('$value')";
-            $this->postCon->insert($sql);
-    
-            $row = $this->postCon->getLastRecordData('postTypes');
-            $this->updateAtt('postType', $row['id']);
-
-            return true;
-        }
+        $this->updateAtt('postType',$value);
     }
     public function setStatus($status){
         $this->status = $status;
