@@ -9,8 +9,8 @@ class User
     private $type;
     private $email;
     private $password;
-    private $phone;
-    private $photoURL;
+    private $phoneNum;
+    private $urlToPhoto;
     private $userCon;
 //--------------------------------------------
     function __construct()
@@ -41,11 +41,11 @@ class User
         $_SESSION['password'] = $userData['password'];
         $this->password = $userData['password'];
 
-        $_SESSION['phone'] = $userData['phoneNum'];
-        $this->phone = $userData['phoneNum'];
+        $_SESSION['phoneNum'] = $userData['phoneNum'];
+        $this->phoneNum = $userData['phoneNum'];
 
-        $_SESSION['photoURL'] = $userData['urlToPhoto'];
-        $this->photoURL = $userData['urlToPhoto'];
+        $_SESSION['urlToPhoto'] = $userData['urlToPhoto'];
+        $this->urlToPhoto = $userData['urlToPhoto'];
 
     }
     //update Attributes
@@ -132,16 +132,16 @@ class User
         $this->updateAtt('password',$password);
     }
 
-    public function getPhone() {
-        return $this->phone;
+    public function getPhoneNum() {
+        return $this->phoneNum;
     }
 
     public function setPhone($phone) {
         $this->updateAtt('phoneNum',$phone);
     }
 
-    public function getPhotoURL() {
-        return $this->photoURL;
+    public function getUrlToPhoto() {
+        return $this->urlToPhoto;
     }
     public function setPhotoURL($photoURL) {
         $this->updateAtt('urlToPhoto',$photoURL);
