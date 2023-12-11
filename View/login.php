@@ -1,3 +1,17 @@
+<?php
+  session_start();
+  if(isset($_SESSION['id'])) {
+    session_destroy();
+  }
+
+  if(isset($_SESSION['message_Error'])){
+    $message_Error = $_SESSION['message_Error'];
+    unset($_SESSION['message_Error']);
+  }
+  else
+    $message_Error = "";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,7 +101,10 @@
   <div class="login-container">
     <h2>LOGIN</h2>
     
-    <form>
+    <form method = "post" action = "../controller/login_controller.php">
+      <div class="form-group">
+        <h2 style = "color: red"><?php echo $message_Error?></h2>
+      </div>
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" required>
@@ -105,7 +122,7 @@
         <a href="#">Forget password?</a>
       </div>
 
-      <button type="submit" class="submit-btn">Login</button>
+      <button type="submit" name = "submit" class="submit-btn">Login</button>
     </form>
 
     <div class="signup-link">
