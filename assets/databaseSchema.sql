@@ -12,7 +12,7 @@ CREATE TABLE users (
     urlToPhoto VARCHAR(255) DEFAULT NULL
 );
 CREATE TABLE postTypes (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     typeName VARCHAR(255)
 );
 
@@ -26,21 +26,20 @@ CREATE TABLE post (
     (if there is 10000 post and we write the postType in string this will cost a lot of memory 
     but with another table we write the string only once and after that we use int references) */
     numViews INT DEFAULT 0,
-    status INT,
+    status INT DEFAULT 0,
     urlToPhoto VARCHAR(255) DEFAULT NULL,
     likesNum INT DEFAULT 0,
     dislikesNum INT DEFAULT 0,
-    commentNum INT DEFAULT 0,
     ownerId INT,
     FOREIGN KEY (postType) REFERENCES  postTypes(id) ON DELETE SET NULL,
     FOREIGN KEY (ownerId) REFERENCES  users(id)  ON DELETE CASCADE
 );
+
 CREATE TABLE comments (
     commentId INT PRIMARY KEY AUTO_INCREMENT,
     postId INT NOT NULL,
     userId INT NOT NULL,
     comment VARCHAR(1024) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     parentCommentId INT,
     FOREIGN KEY (postId) REFERENCES post(postId) ON DELETE CASCADE,
     FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
