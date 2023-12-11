@@ -3,10 +3,10 @@
 include ('../model/db/DatabaseClass.php');
 class User 
 {
-    private $userId;
+    private $id;
     private $fName;
-    private $lName;
-    private $type;
+    private $lname;
+    private $userType;
     private $email;
     private $password;
     private $phoneNum;
@@ -23,17 +23,17 @@ class User
 
     private function startSession($userData){
         session_start();
-        $_SESSION['userId'] = $userData['id'];
-        $this->userId = $userData['id'];
+        $_SESSION['id'] = $userData['id'];
+        $this->id = $userData['id'];
 
         $_SESSION['fName'] = $userData['fname'];
         $this->fName = $userData['fname'];
 
-        $_SESSION['lName'] = $userData['lname'];
-        $this->lName = $userData['lname'];
+        $_SESSION['lname'] = $userData['lname'];
+        $this->lname = $userData['lname'];
 
-        $_SESSION['type'] = $userData['userType'];
-        $this->type = $userData['userType'];
+        $_SESSION['userType'] = $userData['userType'];
+        $this->userType = $userData['userType'];
 
         $_SESSION['email'] = $userData['email'];
         $this->email = $userData['email'];
@@ -54,7 +54,7 @@ class User
         $sql = "
             UPDATE users
             SET $att = '$value'
-            WHERE id = $this->userId;
+            WHERE id = $this->id;
         ";
     
         $status = $this->userCon->update($sql);
@@ -91,7 +91,7 @@ class User
 //--------------------------------------------
     //getter and setter
     public function getUserId() {
-        return $this->userId;
+        return $this->id;
     }
 
     public function getfName() {
@@ -104,7 +104,7 @@ class User
     
 
     public function getlName() {
-        return $this->lName;
+        return $this->lname;
     }
 
     public function setlName($lName) {
@@ -112,8 +112,8 @@ class User
     }
 
     
-    public function getType() {
-        return $this->type;
+    public function getUserType() {
+        return $this->userType;
     }
 
     public function getEmail() {
