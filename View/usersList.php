@@ -53,8 +53,7 @@ else if ($id === "2"){
     <script>
     function confirmDeleteUser($id) {
         if (confirm('Are you sure you want to delete this user?')) {
-            console.log($id);
-            //window.location.href = '../controller/deletUser.php?id=' + $id;
+            window.location.href = '../controller/deletUser.php?id=' + $id;
         }
         }
     </script>
@@ -91,7 +90,7 @@ else if ($id === "2"){
                     <div class="col col-1"><?php echo $user['fname'] . ' ' . $user['lname'] ?></div>
                     <div class="col col-2"><?php echo $user['phoneNum'] ?></div>
                     <div class="col col-3"><?php echo $user['userType'] ?></div>                        
-                    <div class="col col-4"><button onclick="confirmDeleteUser('<?php $user['id'] ?>')" class="btnDelete">delete</button></div>
+                    <div class="col col-4"><button onclick="confirmDeleteUser('<?php echo $user['id'] ?>')" class="btnDelete">delete</button></div>
                     <div class="col col-5"><button class="btn">View profile</button></div>
                 </li>
             <?php } ?>
