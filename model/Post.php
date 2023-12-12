@@ -146,10 +146,11 @@ class Post {
     public function getUrlToPhoto(){
         return $this->urlToPhoto;
     }
+    
     public function getStatus(){
         return $this->status;
     }
-
+    public function getpostType(){}
     
 }
 ?>

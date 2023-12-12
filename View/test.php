@@ -1,5 +1,4 @@
-<?php 
-require_once('../model/Viewer.php');
-$viewer = new Viewer();
-$viewer->savePost(1,56);
-?>
+<form action="../View/editPost.php" method="post">
+    <input type="hidden" name="postId" value="75">
+    <input type="submit" value="Update Post">
+</form>
