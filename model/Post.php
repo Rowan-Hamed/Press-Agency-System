@@ -150,7 +150,10 @@ class Post {
     public function getStatus(){
         return $this->status;
     }
-    public function getpostType(){}
+    public function getpostType(){
+        return $this->postType;
+    }
     
+
 }
 ?>
