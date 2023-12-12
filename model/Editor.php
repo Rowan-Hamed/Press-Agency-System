@@ -13,7 +13,7 @@ class Editor
         $sql =
         "
         INSERT INTO post
-        (title, body, postType, status, urlToPhoto, ownerId)
+                (title, body, postType, status, urlToPhoto, ownerId)
         VALUES ('$title', '$body', '$postType', $status, '$urlToPhoto', $ownerId);
         ";
         $this->userCon->insert($sql);
