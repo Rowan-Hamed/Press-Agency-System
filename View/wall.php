@@ -61,7 +61,6 @@ if(session_status() != PHP_SESSION_ACTIVE)
                                     chat_bubble
                                 </span>
                             </a>
-                            Views: <?php echo $p->getNumViews() ?>
                         </div>
                     </div>
                 </div>
