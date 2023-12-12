@@ -57,7 +57,7 @@ $data = $db->display("SELECT postId FROM post WHERE ownerId = $id");
                                     delete
                                 </span>
                             </a>
-                            <a href="edit_post.php?post_id=<?php echo $p->getPostId(); ?>" style="color: blue; font-size: 1rem;">
+                            <a href="../View/editPost.php?postId=<?php echo $p->getPostId(); ?>" style="color: blue; font-size: 1rem;">
                                 <span class="material-icons-outlined">
                                     edit
                                 </span>
