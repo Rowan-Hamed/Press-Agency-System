@@ -1,4 +1,4 @@
-<<?php include ("../assets/navBar/navBar.php"); ?>
+<?php include ("../assets/navBar/navBar.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,10 +21,6 @@
             <label class="form-label" for="Name">Name</label>
             <input type="text" id="Name" class="form-control form-control-lg" placeholder="Name" required name="name"/>   
           </div><br>
-          <div class="form-outline">
-            <label class="form-label" for="date">date</label>
-            <input type="date" id="date" class="form-control form-control-lg" placeholder="date" required name="date"/>   
-          </div><br>
 
           <div class="col-md-6 mb-4">
               <h6 class="mb-2 pb-1">Type_Post</h6>
@@ -39,7 +35,7 @@
           <option value="Economic">Economic</option>
           <option value="health">Health</option>
         </select>      
-          </div><br>
+          </div><br><br><br><br>
        
           <div class="form-outline">
             <label class="form-label" for="Title_Artical">Title_Post</label>
@@ -52,7 +48,7 @@
           <div class="col-md-12">
             <label class="labels" for="photo">photo</label>
             <input type="file" name="photo" class="form-control" id="photo" >
-            </div><br>
+            </div><br><br><br><br>
 
             <div class="d-flex justify-content-end pt-3">
                 <button class="btn btn-outline-success" name="Add">Add</button> 
