@@ -40,7 +40,11 @@ $data = $db->display("SELECT postId FROM post WHERE status = 0");
     <title>Requested News</title>
 </head>
 <body>
-    <?php include("../assets/navBar/navBar.php"); ?>
+    <?php include("../assets/navBar/navBar.php");
+        if(empty($data)) {
+            echo "<h1 style='text-align: center;'>There is no news";
+        }
+        ?>
     <main>
         <?php if (!empty($data)) { ?>
             <?php foreach ($data as $post) {
@@ -80,14 +84,6 @@ $data = $db->display("SELECT postId FROM post WHERE status = 0");
             <?php } ?>
         <?php } ?>
     </main>
-
-    <script>
-            function acc($id) {
-                window.location.replace('?id=' . $id);
-            }
-            function ref($id) {
-                window.location.replace("?id=" . $id);
-            }
-    </script>
+        
 </body>
 </html>
