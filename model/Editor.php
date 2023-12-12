@@ -8,21 +8,6 @@ class Editor
     public function __construct() {
         $this->userCon = new database();
     }
-    /*
-    +addPost(data...)
-    +deletePost(postId)
-    +updatePost(postId, data...)
-    +reply(postId, CommentId, comment)
-    +getMyPosts()
-    private $postID;
-    private $title;
-    private $body;
-    private $creationTime;
-    private $status;
-    private $postType;
-    private $owner;
-    private $urlToPhoto;
-    */
 
     public function addPost($title,$body ,$status,$postType,$ownerId,$urlToPhoto){
         $sql =

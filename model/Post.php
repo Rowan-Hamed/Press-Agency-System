@@ -56,7 +56,13 @@ class Post {
         }
     }
 //--------------------------------------------
-    public function addLike(){
+    public function miminuslikes(){
+        $this->updateAtt('likesNum',$this->likesNum - 1);
+    }
+    public function miminusDislikes(){
+        $this->updateAtt('dislikesNum',$this->dislikesNum - 1);
+    }
+public function addLike(){
         $this->updateAtt('likesNum',$this->likesNum + 1);
         
     }
