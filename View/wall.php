@@ -20,7 +20,7 @@ if(session_status() != PHP_SESSION_ACTIVE)
     <title>Press Agency</title>
 </head>
 <body>
-    <?php include ("../assets/navBar/navBar.php"); ?>
+<?php include("../assets/navBar/navBar.php"); ?> </br></br></br></br>
     <main>
         <?php if(!empty($data)) { ?>
         <?php foreach($data as $post) { 
