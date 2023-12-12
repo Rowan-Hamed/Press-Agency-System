@@ -96,7 +96,7 @@ if(isset($_SESSION['error-message'])) {
 </head>
 <body>
 
-<?php include("../assets/navBar/navBar.php"); ?> </br></br></br></br>
+<?php include("../assets/navBar/navBar.php"); ?>
 
   <div class="signup-container">
     <h2>ADD USER</h2>

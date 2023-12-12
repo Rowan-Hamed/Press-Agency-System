@@ -92,7 +92,7 @@
 </head>
 <body>
 
-<?php include("../assets/navBar/navBar.php"); ?> </br></br></br></br>
+<?php include("../assets/navBar/navBar.php"); ?>
 
   <div class="login-container">
     <h2>LOGIN</h2>
