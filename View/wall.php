@@ -1,6 +1,13 @@
 <?php
 if(session_status() != PHP_SESSION_ACTIVE)
     session_start();
+
+    require_once ('../model/db/DatabaseClass.php');
+    require_once ('../model/Post.php');
+
+    $db = new database();
+
+    $data = $db->display("SELECT postId FROM post WHERE status = 1");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,42 +22,51 @@ if(session_status() != PHP_SESSION_ACTIVE)
 <body>
     <?php include ("../assets/navBar/navBar.php"); ?>
     <main>
-        <div class="main-feed">
-            <div class="feed-tweet">
-                <img class="tweet-img" src="../assets/photos/profilePhoto/1.png" alt="">
-                <div class="feed-tweet-details">
-                    <div class="tweeter-details">
-                        <a href="" class="tweeter-name">Owner name</a>
-                    </div>
-                    <div class="tweet-text">
-                        <p>Hello brothers</p>
-                    </div>
-                    <img src="../assets/photos/postPhoto/post1.jpg" alt="">
-                    <div class="tweet-icons">
-                        <a href="" style="color: black; font-size: rem">
-                        <span class="material-icons-outlined">
-                            thumb_up
-                        </span>
-                        </a>
-                        Likes: 10
-                        <a href="" style="color: black; font-size: rem">
+        <?php foreach($data as $post) { 
+            $p = new Post($post['postId']);
+        ?>
+            <div class="main-feed">
+                <div class="feed-tweet">
+                    <?php if(!empty($p->getOwnerPhoto())) { ?>
+                        <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $p->getOwnerPhoto() ?>" alt="">
+                    <?php } ?>
+                    <div class="feed-tweet-details">
+                        <div class="tweeter-details">
+                            <a href="" class="tweeter-name"><?php echo $p->getOwner() ?></a>
+                        </div>
+                        <div class="tweet-text">
+                            <h6><?php echo $p->getTitle() ?></h6>
+                            <p><?php echo $p->getBody() ?></p>
+                        </div>
+                        <?php if(!empty($p->getUrlToPhoto())) { ?>
+                            <img src="../assets/photos/postPhoto/<?php echo $p->getUrlToPhoto() ?>" alt="">
+                        <?php } ?>
+                        <div class="tweet-icons">
+                            <a href="" style="color: black; font-size: rem">
                             <span class="material-icons-outlined">
-                                thumb_down
+                                thumb_up
                             </span>
-                        </a>
-                        Disikes: 5
-                        <a href="" style="color: black; font-size: rem">
-                            <span class="material-icons-outlined">
-                                chat_bubble
-                            </span>
-                        </a>
-                        Views: 12
+                            </a>
+                            Likes: <?php echo $p->getLikesNum() ?>
+                            <a href="" style="color: black; font-size: rem">
+                                <span class="material-icons-outlined">
+                                    thumb_down
+                                </span>
+                            </a>
+                            Disikes: <?php echo $p->getDislikesNum() ?>
+                            <a href="" style="color: black; font-size: rem">
+                                <span class="material-icons-outlined">
+                                    chat_bubble
+                                </span>
+                            </a>
+                            Views: <?php echo $p->getNumViews() ?>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        </br>
-        </br>
+            </br>
+            </br>
+        <?php }?>
     </main>
 
 </body>

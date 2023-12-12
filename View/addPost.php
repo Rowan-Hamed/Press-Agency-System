@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['userType']) || (strtolower($_SESSION['userType']) !== "admin" && strtolower($_SESSION['userType']) !== "editor")) {
+        header('Location: wall.php');
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,11 +80,6 @@
                 <option value="Economic">Economic</option>
                 <option value="health">Health</option>
         </select>
-        </div>
-
-        <div class="form-group">
-            <label for="postType">Post Type:</label>
-            <input type="text" class="form-control" id="postType" name="postType" placeholder="Enter the post type" required>
         </div>
 
         <div class="form-group">

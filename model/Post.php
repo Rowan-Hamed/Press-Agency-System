@@ -12,6 +12,7 @@ class Post {
     private $likesNum;
     private $dislikesNum;
     private $owner;
+    private $ownerPhoto;
     private $urlToPhoto;
     private $postCon;
     /*
@@ -28,6 +29,7 @@ class Post {
         
         $this->postID = $row['postId'];
         $this->title = $row['title'];
+        $this->body = $row['body'];
         $this->creationTime = $row['creationTime'];
         $this->numViews = $row['numViews'];
         $this->status = $row['status'];
@@ -37,8 +39,9 @@ class Post {
         $this->postType = $row['postType'];
         
         //owner will return the name of the owner not the id
-        $sql = "SELECT fname, lname FROM users WHERE id = $row[ownerId]";
+        $sql = "SELECT fname, lname, urlToPhoto FROM users WHERE id = $row[ownerId]";
         $res = $this->postCon->select($sql);
+        $this->ownerPhoto = $res['urlToPhoto'];
         $this->owner =$name =  $res['fname'] . ' ' . $res['lname'];        ;
         
     }
@@ -62,7 +65,7 @@ class Post {
     public function miminusDislikes(){
         $this->updateAtt('dislikesNum',$this->dislikesNum - 1);
     }
-public function addLike(){
+    public function addLike(){
         $this->updateAtt('likesNum',$this->likesNum + 1);
         
     }
@@ -136,8 +139,11 @@ public function addLike(){
     public function getOwner() {
         return $this->owner;
     }
+    public function getOwnerPhoto() {
+        return $this->ownerPhoto;
+    }
 
-    public function getUrlToPhoto($newUrlToPhoto){
+    public function getUrlToPhoto(){
         return $this->urlToPhoto;
     }
     public function getStatus(){

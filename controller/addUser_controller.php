@@ -29,7 +29,7 @@
         }
 
   
-        if(isset($_FILES['profile-image'])) {
+        if(isset($_FILES['profile-image']) && !empty($_FILES['profile-image']['name'])) {
             $image_type = strtolower(pathinfo(basename($_FILES['profile-image']["name"]), PATHINFO_EXTENSION));
             $profile_image = $id . '.' . $image_type;
             move_uploaded_file($_FILES["profile-image"]["tmp_name"], "../assets/photos/profilePhoto/" . $profile_image);
