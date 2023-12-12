@@ -54,7 +54,7 @@
 </head>
 <body>
 
-<?php include("../assets/navBar/navBar.php"); ?> </br></br></br></br>
+<?php include("../assets/navBar/navBar.php"); ?> 
 
     <div class="container">
     <h2>Add a Post</h2>
