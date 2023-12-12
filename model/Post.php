@@ -1,6 +1,6 @@
 
 <?php 
-include ('../model/db/DatabaseClass.php');
+require_once ('../model/db/DatabaseClass.php');
 class Post {
     private $postID;
     private $title;
@@ -34,7 +34,7 @@ class Post {
         $this->urlToPhoto = $row['urlToPhoto'];
         $this->likesNum = $row['likesNum'];
         $this->dislikesNum = $row['dislikesNum'];
-        $this->postType = $row['typeName'];
+        $this->postType = $row['postType'];
         
         //owner will return the name of the owner not the id
         $sql = "SELECT fname, lname FROM users WHERE id = $row[ownerId]";
@@ -75,7 +75,7 @@ class Post {
         $sql = 
         "
         INSERT INTO comments (postId, userId, comment, parentCommentId)
-        VALUES ($this->postID, $userID,$comment, $commentId);
+        VALUES ($this->postID, $userID,'$comment', $commentId);
         ";
         $this->postCon->insert($sql);
     }

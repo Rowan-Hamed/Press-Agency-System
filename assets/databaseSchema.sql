@@ -24,7 +24,6 @@ CREATE TABLE post (
     likesNum INT DEFAULT 0,
     dislikesNum INT DEFAULT 0,
     ownerId INT,
-    FOREIGN KEY (postType) REFERENCES  postTypes(id) ON DELETE SET NULL,
     FOREIGN KEY (ownerId) REFERENCES  users(id)  ON DELETE CASCADE
 );
 

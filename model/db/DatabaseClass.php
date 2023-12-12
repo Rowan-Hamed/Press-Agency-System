@@ -11,7 +11,10 @@ class database
 
     function __construct()
     {
-        require_once 'connect.php';
+        $host = 'localhost';
+        $dbUser= 'root';
+        $dbPass = '';
+        $dbName = 'PRESS_AGENCY';
         $this->host = $host;
         $this->dbUser = $dbUser;
         $this->dbPass = $dbPass;
@@ -95,6 +98,15 @@ class database
     function getLastRecordData($tablename)
     {
         $query = "SELECT * FROM $tablename ORDER BY id  DESC LIMIT 1";
+        
+        if ($result = $this->conn->query($query)) {
+            $data = $result->fetch_array(MYSQLI_ASSOC);
+        }
+        return $data;
+    }
+    function getLastRecordPostId($tablename)
+    {
+        $query = "SELECT * FROM $tablename ORDER BY postId  DESC LIMIT 1";
         
         if ($result = $this->conn->query($query)) {
             $data = $result->fetch_array(MYSQLI_ASSOC);
