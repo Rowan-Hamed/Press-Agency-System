@@ -69,7 +69,7 @@ class Admin{
     }
 
     public function deletePost($postId){
-        $sql = "DELETE FROM post WHERE id = $postId";
+        $sql = "DELETE FROM post WHERE postId = $postId";
         $this->userCon->delete($sql);
     }
     public function updatePost($postID,$title,$body,$status,$postType,$urlToPhoto){
