@@ -53,7 +53,12 @@ else if ($id === "2"){
     <script>
     function confirmDeleteUser($id) {
         if (confirm('Are you sure you want to delete this user?')) {
+<<<<<<< HEAD
             window.location.href = '../controller/deletUser.php?id=' + $id;
+=======
+            console.log($id);
+            window.location.href = '../controller/deletUser.php?id='+ $id+'';
+>>>>>>> c1da1cf29a353e5bf39387a31102ef8208d3b825
         }
         }
     </script>
@@ -85,7 +90,9 @@ else if ($id === "2"){
             </li>
         <?php foreach($users as $user) {
             if(strtolower($user['userType']) === "admin") continue;
+            
             ?>
+            <?php echo $user['id'] ?>
                 <li class="table-row">
                     <div class="col col-1"><?php echo $user['fname'] . ' ' . $user['lname'] ?></div>
                     <div class="col col-2"><?php echo $user['phoneNum'] ?></div>

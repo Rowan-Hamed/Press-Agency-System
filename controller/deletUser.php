@@ -5,6 +5,6 @@ $admin = new Admin();
 
 if (isset($_GET['id'])) {
     $admin->deleteUser($_GET['id']);
-    header('location:..\view\usersList.php');
+    header('location:..\View\usersList');
 }
 ?>
