@@ -51,7 +51,7 @@ $data = $db->display("SELECT postId FROM post WHERE ownerId = $id");
                             <img style="width: 90%; height: auto; border-radius: 8px; margin-right: 12px" src="../assets/photos/postPhoto/<?php echo $p->getUrlToPhoto() ?>" alt="">
                         <?php } ?>
                         <div class="tweet-icons">
-                            <a href="delete_post.php?post_id=<?php echo $p->getPostId(); ?>" style="color: red; font-size: 1rem;"
+                            <a href="../controller/deletePost.php?id=<?php echo $p->getPostId(); ?>" style="color: red; font-size: 1rem;"
                                onclick="return confirm('Are you sure you want to delete this post?')">
                                 <span class="material-icons-outlined">
                                     delete
