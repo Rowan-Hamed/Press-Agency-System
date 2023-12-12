@@ -28,18 +28,12 @@ if(isset($_SESSION['error-message'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add User Page</title>
   <style>
-    body {
-      background: url('../assets/photos/style/bg1.jpg') center center fixed;
-      background-size: cover;
-      font-family: "Times New Roman", Times, serif;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
 
     .signup-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       background: rgba(255, 255, 255, 0.8);
       padding: 30px;
       border-radius: 15px;
