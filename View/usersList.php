@@ -53,12 +53,7 @@ else if ($id === "2"){
     <script>
     function confirmDeleteUser($id) {
         if (confirm('Are you sure you want to delete this user?')) {
-<<<<<<< HEAD
             window.location.href = '../controller/deletUser.php?id=' + $id;
-=======
-            console.log($id);
-            window.location.href = '../controller/deletUser.php?id='+ $id+'';
->>>>>>> c1da1cf29a353e5bf39387a31102ef8208d3b825
         }
         }
     </script>
