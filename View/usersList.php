@@ -87,7 +87,6 @@ else if ($id === "2"){
             if(strtolower($user['userType']) === "admin") continue;
             
             ?>
-            <?php echo $user['id'] ?>
                 <li class="table-row">
                     <div class="col col-1"><?php echo $user['fname'] . ' ' . $user['lname'] ?></div>
                     <div class="col col-2"><?php echo $user['phoneNum'] ?></div>
