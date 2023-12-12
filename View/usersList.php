@@ -84,7 +84,11 @@ else if ($id === "2"){
                     <div class="col col-1"><?php echo $user['fname'] . ' ' . $user['lname'] ?></div>
                     <div class="col col-2"><?php echo $user['phoneNum'] ?></div>
                     <div class="col col-3"><?php echo $user['userType'] ?></div>
+                    <form action="../controller/deletUser.php" method="post">
+                    <?php echo '<input type="hidden" name="userId" value=" ' . $user['id'] .' ">' ;?>
                     <div class="col col-4"><button class="btnDelete">delete</button></div>
+                    </form>
+                    
                     <div class="col col-5"><button class="btn">View profile</button></div>
                 </li>
             <?php } ?>
