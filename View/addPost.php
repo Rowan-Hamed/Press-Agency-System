@@ -12,7 +12,7 @@
         }
 
         .container {
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.91);
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 30px;
@@ -62,6 +62,19 @@
         </div>
 
         <div class="form-group">
+            <select class="form-control form-control-lg" id="Type-Aritcal" name="Artical-role" required >
+                <option value="" disabled selected>choose Type-Aritcal...</option>
+                <option value="Sport">Sport</option>
+                <option value="Cinema">Cinema</option>
+                <option value="political">political</option>
+                <option value="Social">Social</option>
+                <option value="scientific">scientific</option>
+                <option value="Economic">Economic</option>
+                <option value="health">Health</option>
+        </select>
+        </div>
+
+        <div class="form-group">
             <label for="postType">Post Type:</label>
             <input type="text" class="form-control" id="postType" name="postType" placeholder="Enter the post type" required>
         </div>
@@ -75,9 +88,6 @@
     </form>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
