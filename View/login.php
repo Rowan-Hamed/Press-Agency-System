@@ -18,17 +18,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      background: url('../assets/photos/style/bg1.jpg') center center fixed; /* Background image */
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
     .login-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       background-color: rgba(255, 255, 255, 0.9); /* Background color with opacity */
       border-radius: 15px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
