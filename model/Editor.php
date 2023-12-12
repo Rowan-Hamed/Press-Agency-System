@@ -25,14 +25,13 @@ class Editor
         return $this->userCon->delete($sql);
     }
 
-    public function updatePost($postID,$title,$body ,$status,$postType,$urlToPhoto){
+    public function updatePost($postID,$title,$body ,$postType,$urlToPhoto){
         $sql =
         "UPDATE post
                     SET
                     title =     '$title',
                     body =      '$body',
                     postType =  '$postType',
-                    status =    '$status',
                     urlToPhoto ='$urlToPhoto'
 
                     WHERE

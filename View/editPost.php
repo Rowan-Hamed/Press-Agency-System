@@ -1,7 +1,7 @@
 <?php 
 require_once ('../model/Post.php');
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $postID = $_POST['postId'];
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $postID = $_GET['postId'];
     $post = new Post($postID);
 
 }
@@ -61,8 +61,10 @@ else{
 <?php include("../assets/navBar/navBar.php"); ?>
 
     <div class="container">
-    <h2>Add a Post</h2>
-    <form action="" method="post" enctype="multipart/form-data">
+    <h2>Edit a Post</h2>
+    <form action="../controller/editPost_controller.php" method="GET" enctype="multipart/form-data">
+    <?php echo '<div class="form-group"> <input type="hidden" name="postId" value="'.$postID . '"</div>'; ?>
+    <?php echo '<div class="form-group"> <input type="hidden" name="photoURl" value="'.$post->getUrlToPhoto() . '"</div>'; ?>
         <div class="form-group">
             <label for="title">Title:</label>
             <?php  
@@ -77,23 +79,18 @@ else{
         <div class="form-group">
             <select class="form-control form-control-lg" id="Type-Aritcal" name="Artical-role" required >
                 <?php 
-                echo '<option value="" disabled selected>choose Type-Aritcal...</option>';
-                if($post->getType)
+                echo '<option value="" >choose Type-Aritcal...</option>';
+                $postTypes = ['Sport', 'Cinema', 'Social', 'Political', 'Scientific', 'Economic', 'Health'];
+                
+                foreach ($postTypes as $type) {
+                    $selected = ( strtolower($post->getpostType())== strtolower($type)) ? 'selected' : '';
+                    echo "<option $selected value=\"$type\">$type</option>";
+                }
+                
                 ?>
-                <option value="Sport">Sport</option>
-                <option value="Cinema" selected>Cinema</option>
-                <option value="political">political</option>
-                <option value="Social">Social</option>
-                <option value="scientific">scientific</option>
-                <option value="Economic">Economic</option>
-                <option value="health">Health</option>
         </select>
         </div>
 
-        <div class="form-group">
-            <label for="urlToPhoto">URL to Photo:</label>
-            <input type="file" class="form-control" id="urlToPhoto" name="urlToPhoto">
-        </div>
 
         <button type="submit" class="btn btn-primary">Submit Post</button>
     </form>
