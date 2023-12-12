@@ -20,8 +20,14 @@
         <a class="navbar-brand" href="wall.php">press agency</a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <?php if(isset($_SESSION['userType']) && strtolower($_SESSION['userType']) === "admin") { ?>
+
+      <?php if(isset($_SESSION['userType']) && (strtolower($_SESSION['userType']) === "admin" || strtolower($_SESSION['userType']) === "editor")) { ?>
+          <li><a href="addPost.php">add new post</a></li>
+        <?php } ?>
+      <?php if(isset($_SESSION['userType']) && strtolower($_SESSION['userType']) === "admin") { ?>
+            <li><a href="requestedNews.php">requested news</a></li>
             <li><a href="addUser.php">add new user</a></li>
+            <li><a href="usersList.php">Users List</a></li>
         <?php } ?>
 
         <li><a href="wall.php">Wall</a></li>
