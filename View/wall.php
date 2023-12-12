@@ -22,6 +22,7 @@ if(session_status() != PHP_SESSION_ACTIVE)
 <body>
     <?php include ("../assets/navBar/navBar.php"); ?>
     <main>
+        <?php if(!empty($data)) { ?>
         <?php foreach($data as $post) { 
             $p = new Post($post['postId']);
         ?>
@@ -33,6 +34,7 @@ if(session_status() != PHP_SESSION_ACTIVE)
                     <div class="feed-tweet-details">
                         <div class="tweeter-details">
                             <a href="" class="tweeter-name"><?php echo $p->getOwner() ?></a>
+                            <h5 href="" class="tweeter-name"><?php echo $p->getCreationTime() ?></h5>
                         </div>
                         <div class="tweet-text">
                             <h6><?php echo $p->getTitle() ?></h6>
@@ -66,7 +68,7 @@ if(session_status() != PHP_SESSION_ACTIVE)
             </div>
             </br>
             </br>
-        <?php }?>
+        <?php } }?>
     </main>
 
 </body>
