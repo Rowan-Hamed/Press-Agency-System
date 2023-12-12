@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once ('../model/Post.php');
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $postID = $_GET['postId'];

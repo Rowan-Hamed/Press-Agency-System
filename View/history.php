@@ -1,20 +1,20 @@
 <?php
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-}
-else{
-    $id = 0;
+} else {
+    $id = 6;
 }
 
-if(session_status() != PHP_SESSION_ACTIVE)
+if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
+}
 
-    require_once ('../model/db/DatabaseClass.php');
-    require_once ('../model/Post.php');
+require_once('../model/db/DatabaseClass.php');
+require_once('../model/Post.php');
 
-    $db = new database();
+$db = new database();
 
-    $data = $db->display("SELECT postId FROM post WHERE ownerId = $id");
+$data = $db->display("SELECT postId FROM post WHERE ownerId = $id");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,14 +28,14 @@ if(session_status() != PHP_SESSION_ACTIVE)
 </head>
 <body>
 <?php include("../assets/navBar/navBar.php"); ?>
-    <main>
-        <?php if(!empty($data)) { ?>
-        <?php foreach($data as $post) { 
+<main>
+    <?php if (!empty($data)) { ?>
+        <?php foreach ($data as $post) {
             $p = new Post($post['postId']);
-        ?>
+            ?>
             <div class="main-feed">
                 <div class="feed-tweet">
-                    <?php if(!empty($p->getOwnerPhoto())) { ?>
+                    <?php if (!empty($p->getOwnerPhoto())) { ?>
                         <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $p->getOwnerPhoto() ?>" alt="">
                     <?php } ?>
                     <div class="feed-tweet-details">
@@ -47,35 +47,30 @@ if(session_status() != PHP_SESSION_ACTIVE)
                             <h6><?php echo $p->getTitle() ?></h6>
                             <p><?php echo $p->getBody() ?></p>
                         </div>
-                        <?php if(!empty($p->getUrlToPhoto())) { ?>
-                            <img src="../assets/photos/postPhoto/<?php echo $p->getUrlToPhoto() ?>" alt="">
+                        <?php if (!empty($p->getUrlToPhoto())) { ?>
+                            <img style="width: 90%; height: auto; border-radius: 8px; margin-right: 12px" src="../assets/photos/postPhoto/<?php echo $p->getUrlToPhoto() ?>" alt="">
                         <?php } ?>
                         <div class="tweet-icons">
-                            <a href="" style="color: black; font-size: rem">
-                            <span class="material-icons-outlined">
-                                thumb_up
-                            </span>
-                            </a>
-                            Likes: <?php echo $p->getLikesNum() ?>
-                            <a href="" style="color: black; font-size: rem">
+                            <a href="delete_post.php?post_id=<?php echo $p->getPostId(); ?>" style="color: red; font-size: 1rem;"
+                               onclick="return confirm('Are you sure you want to delete this post?')">
                                 <span class="material-icons-outlined">
-                                    thumb_down
+                                    delete
                                 </span>
                             </a>
-                            Disikes: <?php echo $p->getDislikesNum() ?>
-                            <a href="" style="color: black; font-size: rem">
+                            <a href="edit_post.php?post_id=<?php echo $p->getPostId(); ?>" style="color: blue; font-size: 1rem;">
                                 <span class="material-icons-outlined">
-                                    chat_bubble
+                                    edit
                                 </span>
                             </a>
+                            <!-- ... other icons ... -->
                         </div>
                     </div>
                 </div>
             </div>
-            </br>
-            </br>
-        <?php } }?>
-    </main>
-
+            <br>
+            <br>
+        <?php } ?>
+    <?php } ?>
+</main>
 </body>
 </html>

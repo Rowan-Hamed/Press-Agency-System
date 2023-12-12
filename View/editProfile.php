@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +15,6 @@
           background-image: url('bg1.jpg'); /* Add your background image URL */
           background-size: cover;
           background-position: center;
-          display: flex;
           align-items: center;
           justify-content: center;
           height: 100vh;
@@ -83,9 +85,9 @@
   
 </head>
 <body>
-
+<?php include("../assets/navBar/navBar.php"); ?>
     <div class="profile-image-container">
-        <img src="unknown_person.jpg" alt="Profile Image">
+        <img src="../assets/photos/style/unknown_person.jpg" alt="Profile Image">
     </div>
 
     <div class="profile-container">
@@ -102,6 +104,10 @@
 
             <label for="phone">Phone Number</label>
             <input type="tel" id="phone" placeholder="Enter your phone number" required>
+
+
+            <label for="password">password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
 
             <label for="profileImage">Profile Image</label>
             <input type="file" id="profileImage" accept="image/*" required>

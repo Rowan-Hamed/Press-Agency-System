@@ -41,7 +41,7 @@ if(session_status() != PHP_SESSION_ACTIVE)
                             <p><?php echo $p->getBody() ?></p>
                         </div>
                         <?php if(!empty($p->getUrlToPhoto())) { ?>
-                            <img src="../assets/photos/postPhoto/<?php echo $p->getUrlToPhoto() ?>" alt="">
+                            <img style="width: 90%; height: auto; border-radius: 8px; margin-right: 12px" src="../assets/photos/postPhoto/<?php echo $p->getUrlToPhoto() ?>" alt="">
                         <?php } ?>
                         <div class="tweet-icons">
                             <a href="" style="color: black; font-size: rem">
