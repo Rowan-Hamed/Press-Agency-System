@@ -1,32 +1,11 @@
 <?php
 session_start();
 
-require_once('../model/db/DatabaseClass.php');
-require_once('../model/Post.php');
-
-if (isset($_POST['action']) && isset($_POST['postId'])) {
-    $action = $_POST['action'];
-    $postId = $_POST['postId'];
-
-    $db = new Database();
-
-    // Load the post based on postId
-    $post = new Post($postId);
-
-    if ($action === 'accept') {
-        // Placeholder: Implement logic to mark the post as accepted
-        $post->acceptPost();
-    } elseif ($action === 'refuse') {
-        // Placeholder: Implement logic to mark the post as refused
-        $post->refusePost();
-    }
-
-    // Redirect to the page displaying requested news
-    header("Location: display_requested_news.php");
-    exit();
+if(!isset($_SESSION['userType']) || strtolower($_SESSION['userType']) !== "admin"){
+    header("Location: login.php");
 }
-
-// Fetch data to display requested news
+require_once ('../model/db/DatabaseClass.php');
+require_once ('../model/Post.php');
 $db = new Database();
 $data = $db->display("SELECT postId FROM post WHERE status = 0");
 ?>
@@ -82,12 +61,17 @@ $data = $db->display("SELECT postId FROM post WHERE status = 0");
                                 <p><?php echo $p->getBody() ?></p>
                             </div>
                             <?php if (!empty($p->getUrlToPhoto())) { ?>
-                                <img style="width: ; height: auto; border-radius: 8px; margin-right: 12px" src="../assets/photos/postPhoto/<?php echo $p->getUrlToPhoto() ?>" alt="">
+                                <img style="width: 90%; height: auto; border-radius: 8px; margin-right: 12px" src="../assets/photos/postPhoto/<?php echo $p->getUrlToPhoto() ?>" alt="">
                             <?php } ?>
                             <div class="tweet-icons">
-                                <!-- Add Accept and Refuse buttons -->
-                                <button class="accept-btn" onclick="handlePostAction(<?php echo $p->getPostId(); ?>, 'accept')">Accept</button>
-                                <button class="refuse-btn" onclick="handlePostAction(<?php echo $p->getPostId(); ?>, 'refuse')">Refuse</button>
+                            <form action="../controller/acceptPost.php" method="post">
+                                <input type="hidden" name="id" value="<?php echo $p->getPostID() ?>">
+                                <button class="accept-btn">Accept</button>
+                            </form>
+                            <form action="../controller/refusePost.php" method="post">
+                                <input type="hidden" name="id" value="<?php echo $p->getPostID() ?>">
+                                <button class="refuse-btn" >Refuse</button>
+                            </form>
                             </div>
                         </div>
                     </div>
@@ -97,27 +81,13 @@ $data = $db->display("SELECT postId FROM post WHERE status = 0");
         <?php } ?>
     </main>
 
-    <!-- Add JavaScript for handling button clicks -->
     <script>
-        function handlePostAction(postId, action) {
-            // Send an AJAX request to handle_post_action.php
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        // Redirect to the page displaying requested news
-                        window.location.href = 'display_requested_news.php';
-                    } else {
-                        // Handle errors
-                        console.error('Error:', xhr.statusText);
-                    }
-                }
-            };
-
-            xhr.open('POST', 'handle_post_action.php');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send('postId=' + postId + '&action=' + action);
-        }
+            function acc($id) {
+                window.location.replace('?id=' . $id);
+            }
+            function ref($id) {
+                window.location.replace("?id=" . $id);
+            }
     </script>
 </body>
 </html>

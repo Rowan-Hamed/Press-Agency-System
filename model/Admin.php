@@ -49,7 +49,7 @@ class Admin{
         "
         UPDATE post
         SET
-            status = 1,
+            status = 1
         WHERE
             postId = $postId;
         ";
@@ -61,7 +61,7 @@ class Admin{
         "
         UPDATE post
         SET
-            status = -1,
+            status = -1
         WHERE
             postId = $postId;
         ";
@@ -80,7 +80,7 @@ class Admin{
             body = '$body',
             postType = '$postType',
             status = $status,
-            urlToPhoto = '$urlToPhoto',
+            urlToPhoto = '$urlToPhoto'
         WHERE
             postId = $postID; 
         ";
