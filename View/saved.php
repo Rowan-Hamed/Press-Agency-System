@@ -17,6 +17,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <link href="../assets/css/wall.css" rel="stylesheet">
     <title>Press Agency</title>
@@ -37,7 +38,7 @@ session_start();
                     <?php }?>
                     <div class="feed-tweet-details">
                         <div class="tweeter-details">
-                            <a href="" class="tweeter-name"><?php echo $p->getOwner() ?></a>
+                            <a href="./history.php?id=<?php echo $p->getOwnerId() ?>" class="tweeter-name"><?php echo $p->getOwner() ?></a>
                             <h5 href="" class="tweeter-name"><?php echo $p->getCreationTime() ?></h5>
                         </div>
                         <div class="tweet-text">
@@ -64,6 +65,11 @@ session_start();
                                 <span class="material-icons-outlined">
                                     chat_bubble
                                 </span>
+                            </a>
+                            <a href="../controller/savedPost.php?postId=<?php echo $p->getPostID() ?>" style="color: black; font-size: rem">
+                            <span class="material-symbols-outlined">
+                                hotel_class
+                            </span>
                             </a>
                         </div>
                     </div>
