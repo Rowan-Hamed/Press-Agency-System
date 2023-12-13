@@ -73,6 +73,7 @@
         </div>
 
 <!-- dd comment -->
+<?php if(isset($_SESSION['id'])) { ?>
 <div class="main-feed">
     <div class="comment-form">
         <form action="../controller/addcomment.php" method="POST">
@@ -90,6 +91,7 @@
 </div>
 
 <?php 
+        }
     $counter = 0;
     if(!empty($commentsData))
     foreach($commentsData as $comment){
@@ -146,6 +148,8 @@
                 </div>
             <?php }?>
             <!-- -------------------------- -->
+            
+            <?php if(isset($_SESSION['id'])) { ?>
             <div class="main-feed">
                 <div class="comment-form">
                     <form action="../controller/addcomment.php" method="POST">
@@ -162,6 +166,7 @@
                     </form>
                 </div>
             </div>
+            <?php }?>
         </div>
     <?php }?>
 
