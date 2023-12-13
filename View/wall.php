@@ -91,7 +91,7 @@ if(session_status() != PHP_SESSION_ACTIVE)
                                 </span>
                             </a>
                             Disikes: <?php echo $p->getDislikesNum() ?>
-                            <a href="" style="color: black; font-size: rem">
+                            <a href="./comments.php?id=<?php echo $p->getPostID() ?>" style="color: black; font-size: rem">
                                 <span class="material-icons-outlined">
                                     chat_bubble
                                 </span>
