@@ -32,7 +32,7 @@ $urlToPhoto = $userData['urlToPhoto'];
 
 require_once('../model/Post.php');
 
-$data = $db->display("SELECT postId FROM post WHERE ownerId = $id");
+$data = $db->display("SELECT postId, ownerId FROM post WHERE ownerId = $id");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,8 +50,13 @@ $data = $db->display("SELECT postId FROM post WHERE ownerId = $id");
     <?php if (!empty($data)) { ?>
         <?php foreach ($data as $post) {
             $p = new Post($post['postId']);
+            $color = 'rgba(170, 82, 82, 0.548)';
+            if($p->getStatus() == 1)
+                $color = 'rgba(82, 170, 110, 0.548)';
+            else if($p->getStatus() == 0)
+                $color = 'background-color:rgba(48, 63, 75, 0.548)';
             ?>
-            <div class="main-feed">
+            <div class="main-feed" style="background-color: <?php echo $color?>">
                 <div class="feed-tweet">
                     <?php if (!empty($p->getOwnerPhoto())) { ?>
                         <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $p->getOwnerPhoto() ?>" alt="">
@@ -70,6 +75,7 @@ $data = $db->display("SELECT postId FROM post WHERE ownerId = $id");
                         <?php if (!empty($p->getUrlToPhoto())) { ?>
                             <img style="width: 90%; height: auto; border-radius: 8px; margin-right: 12px" src="../assets/photos/postPhoto/<?php echo $p->getUrlToPhoto() ?>" alt="">
                         <?php } ?>
+                        <?php if(isset($_SESSION['id']) && ($post['ownerId'] == $_SESSION['id'] || strtolower($_SESSION['userType']) === "admin")) { ?>
                         <div class="tweet-icons">
                             <a href="../controller/deletePost.php?id=<?php echo $p->getPostId(); ?>" style="color: red; font-size: 1rem;"
                                onclick="return confirm('Are you sure you want to delete this post?')">
@@ -84,6 +90,7 @@ $data = $db->display("SELECT postId FROM post WHERE ownerId = $id");
                             </a>
                             <!-- ... other icons ... -->
                         </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
