@@ -1,9 +1,20 @@
 <?php
 session_start();
-$error="";
-if(isset($_SESSION['error-message'])) 
-$error = $_SESSION['error-message'];
 
+$fname = $lname = $email = $phone = $error = "";
+
+if(isset($_SESSION['error-message'])) {
+  $fname = $_SESSION['old-fname'];
+  $lname = $_SESSION['old-lname'];
+  $email = $_SESSION['old-email'];
+  $phone = $_SESSION['old-phone'];
+  $error = $_SESSION['error-message'];
+  unset($_SESSION['old-fname']);
+  unset($_SESSION['old-lname']);
+  unset($_SESSION['old-email']);
+  unset($_SESSION['old-phone']);
+  unset($_SESSION['error-message']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,37 +87,38 @@ $error = $_SESSION['error-message'];
       display: block;
       margin-top: 15px;
     }
+    .error {
+      color: red;
+    }
   </style>
 </head>
 <body>
 
 <?php include("../assets/navBar/navBar.php"); ?>
+<script src="../assets/js/script.js"></script>
 
   <div class="signup-container">
-    <h2>ADD USER</h2>
-    <form action="../controller/signup.php" method="post" enctype="multipart/form-data">
-      <div class="form-group horizontal">
+    <h2>Sign Up</h2>
+    <form action="../controller/signup.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+    <div class="form-group horizontal">
         <div class="half-width">
           <label for="first-name">First Name</label>
-          <input value="" type="text" id="first-name" name="first-name" required>
+          <input value="<?php echo $fname?>" type="text" id="first-name" name="first-name" required>
         </div>
         <div class="half-width">
           <label for="last-name">Last Name</label>
-          <input value="" type="text" id="last-name" name="last-name" required>
+          <input value="<?php echo $lname?>" type="text" id="last-name" name="last-name" required>
         </div>
       </div>
-      <?php if($error !=""){ ?>
-            <?php echo '<h3 style = "color: red">'. $error.'</h3> '; $error="";    unset($_SESSION['error-message']);?>
-            
-      <?php }?>
+      <h3 style = "color: red"> <?php echo $error?> </h3>
       <div class="form-group horizontal">
         <div class="half-width">
           <label for="email">Email</label>
-          <input value="" type="text" id="email" name="email" required>
+          <input value="<?php echo $email?>" type="text" id="email" name="email" required>
         </div>
         <div class="half-width">
           <label for="phone">Phone Number</label>
-          <input value="" type="tel" id="phone" name="phone" required>
+          <input value="<?php echo $phone?>" type="tel" id="phone" name="phone" required>
         </div>
       </div>
       <div class="form-group">
@@ -117,12 +129,7 @@ $error = $_SESSION['error-message'];
         <label for="profile-image">Profile Image</label>
         <input type="file" id="profile-image" name="profile-image" accept="image/*">
       </div>
-      <div class="form-group">
-        <label for="user-role">User Role</label>
-
-      </div>
-      <?php $error=""; ?>
-      <button type="submit" name="submit" class="submit-btn">Add User</button>
+      <button type="submit" name="submit" class="submit-btn">Sign Up</button>
     </form>
   </div>
 </body>
