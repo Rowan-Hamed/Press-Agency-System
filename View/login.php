@@ -99,7 +99,7 @@
     
     <form method = "post" action = "../controller/login_controller.php">
       <div class="form-group">
-        <h2 style = "color: red"><?php echo $message_Error?></h2>
+        <h4 style = "color: red"><?php echo $message_Error?></h4>
       </div>
       <div class="form-group">
         <label for="username">Username</label>
