@@ -12,7 +12,10 @@ require_once ('../model/Viewer.php');
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $viewer = new Viewer();
     $viewer->addDislike($_SESSION['id'],$_GET['postid']);
-    header('location:../View/wall.php?');
+    if(isset($_GET['loc']))
+    header('location:../View/comments.php?id='.$_GET['postid']);
+    else
+        header('location:../View/wall.php?');
 }
 
 ?>

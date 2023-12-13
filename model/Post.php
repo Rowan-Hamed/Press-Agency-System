@@ -14,7 +14,7 @@ class Post {
     private $owner;
     private $ownerPhoto;
     private $urlToPhoto;
-    private $postCon;
+    public $postCon;
     /*
     +addLike(userId)
     +addDislike(userId)
