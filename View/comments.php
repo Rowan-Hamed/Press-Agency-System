@@ -36,7 +36,9 @@
             <div class="feed-tweet">
                 <?php if(!empty($p->getOwnerPhoto())) { ?>
                     <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $p->getOwnerPhoto() ?>" alt="">
-                <?php } ?>
+                <?php } else {?>
+                    <img class="tweet-img" src="../assets/photos/style/unknown_person.jpg" alt="">
+                <?php }?>
                 <div class="feed-tweet-details">
                     <div class="tweeter-details">
                         <a href="" class="tweeter-name"><?php echo $p->getOwner() ?></a>
@@ -79,9 +81,11 @@
         <form action="../controller/addcomment.php" method="POST">
             <label for="comment">
             <input type="hidden" name="postID" value="<?php echo $_GET['id'] ;?>">
-            <?php if(!empty($_SESSION['urlToPhoto'])) { ?>
-                <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $_SESSION['urlToPhoto'] ?>" alt="">
-            <?php } ?>
+                <?php if(!empty($_SESSION['urlToPhoto'])) { ?>
+                    <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $_SESSION['urlToPhoto'] ?>" alt="Profile Image">
+                <?php } else {?>
+                    <img class="tweet-img" src="../assets/photos/style/unknown_person.jpg" alt="Profile Image">
+                <?php }?>
                 <a  class="tweeter-name"><?php echo $_SESSION['fname'].' ',$_SESSION['lname'] ?></a>
             </label>
             <textarea id="comment" name="comment" rows="4" placeholder="Type your comment here..."></textarea>
@@ -102,8 +106,10 @@
         <div class="main-feed">
             <div class="feed-tweet">
                 <?php if(!empty($userName['urlToPhoto'])) { ?>
-                    <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $userName['urlToPhoto'] ?>" alt="">
-                <?php } ?>
+                    <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $userName['urlToPhoto'] ?>" alt="Profile Image">
+                <?php } else {?>
+                    <img class="tweet-img" src="../assets/photos/style/unknown_person.jpg" alt="Profile Image">
+                <?php }?>
                 <div class="feed-tweet-details">
                     <div class="tweeter-details">
                         <a href="" class="tweeter-name"><?php echo $userName['fname'].' '.$userName['lname'] ?></a>
@@ -134,8 +140,10 @@
                 <div class="main-feed">
                     <div class="feed-tweet">
                         <?php if(!empty($userName['urlToPhoto'])) { ?>
-                            <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $userName['urlToPhoto'] ?>" alt="">
-                        <?php } ?>
+                            <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $userName['urlToPhoto'] ?>" alt="Profile Image">
+                        <?php } else {?>
+                            <img class="tweet-img" src="../assets/photos/style/unknown_person.jpg" alt="Profile Image">
+                        <?php }?>
                         <div class="feed-tweet-details">
                             <div class="tweeter-details">
                                 <a href="" class="tweeter-name"><?php echo $userName['fname'].' '.$userName['lname'] ?></a>
@@ -157,8 +165,10 @@
                         <input type="hidden" name="postID" value="<?php echo $_GET['id'] ;?>">
                         <input type="hidden" name="parComment" value="<?php echo $comment['commentId'] ;?>">
                         <?php if(!empty($_SESSION['urlToPhoto'])) { ?>
-                            <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $_SESSION['urlToPhoto'] ?>" alt="">
-                        <?php } ?>
+                            <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $_SESSION['urlToPhoto'] ?>" alt="Profile Image">
+                        <?php } else {?>
+                            <img class="tweet-img" src="../assets/photos/style/unknown_person.jpg" alt="Profile Image">
+                        <?php }?>
                         <a  class="tweeter-name"><?php echo $_SESSION['fname'].' ',$_SESSION['lname'] ?></a>
                         </label>
                         <textarea id="comment" name="comment" rows="4" placeholder="Type your comment here..."></textarea>

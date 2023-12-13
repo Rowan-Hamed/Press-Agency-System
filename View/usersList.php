@@ -92,7 +92,7 @@ else if ($id === "2"){
                     <div class="col col-2"><?php echo $user['phoneNum'] ?></div>
                     <div class="col col-3"><?php echo $user['userType'] ?></div>                        
                     <div class="col col-4"><button onclick="confirmDeleteUser('<?php echo $user['id'] ?>')" class="btnDelete">delete</button></div>
-                    <div class="col col-5"><button class="btn">View profile</button></div>
+                    <div class="col col-5"><button onclick="window.location.href='./profile.php?id=<?php echo $user['id'] ?>'" class="btn">View profile</button></div>
                 </li>
             <?php } ?>
                 </ul>

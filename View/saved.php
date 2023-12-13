@@ -32,7 +32,9 @@ session_start();
                 <div class="feed-tweet">
                     <?php if(!empty($p->getOwnerPhoto())) { ?>
                         <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $p->getOwnerPhoto() ?>" alt="">
-                    <?php } ?>
+                    <?php } else {?>
+                        <img class="tweet-img" src="../assets/photos/style/unknown_person.jpg" alt="">
+                    <?php }?>
                     <div class="feed-tweet-details">
                         <div class="tweeter-details">
                             <a href="" class="tweeter-name"><?php echo $p->getOwner() ?></a>
