@@ -21,6 +21,16 @@ if(session_status() != PHP_SESSION_ACTIVE)
 </head>
 <body>
 <?php include("../assets/navBar/navBar.php"); ?>
+<br>
+    <form method="get" class="search" id="form">
+        <div id="searchBar">
+            <label for="id" hidden>id</label>
+            <input id ="id" hidden name="id" value="<?php echo $id?>">
+            <label for="search">Search: </label>
+            <input style="color: black" id="search" type="search" name="search" value="<?php echo $search?>">
+            <input type="submit" class='btn' value="search">
+        </div>
+    </form><br>
     <main>
         <?php if(!empty($data)) { ?>
         <?php foreach($data as $post) { 
