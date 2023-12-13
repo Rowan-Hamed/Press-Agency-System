@@ -32,7 +32,7 @@ $urlToPhoto = $userData['urlToPhoto'];
 
 require_once('../model/Post.php');
 
-$data = $db->display("SELECT postId FROM post WHERE ownerId = $id");
+$data = $db->display("SELECT postId, ownerId FROM post WHERE ownerId = $id");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,6 +75,7 @@ $data = $db->display("SELECT postId FROM post WHERE ownerId = $id");
                         <?php if (!empty($p->getUrlToPhoto())) { ?>
                             <img style="width: 90%; height: auto; border-radius: 8px; margin-right: 12px" src="../assets/photos/postPhoto/<?php echo $p->getUrlToPhoto() ?>" alt="">
                         <?php } ?>
+                        <?php if(isset($_SESSION['id']) && ($post['ownerId'] == $_SESSION['id'] || strtolower($_SESSION['userType']) === "admin")) { ?>
                         <div class="tweet-icons">
                             <a href="../controller/deletePost.php?id=<?php echo $p->getPostId(); ?>" style="color: red; font-size: 1rem;"
                                onclick="return confirm('Are you sure you want to delete this post?')">
@@ -89,6 +90,7 @@ $data = $db->display("SELECT postId FROM post WHERE ownerId = $id");
                             </a>
                             <!-- ... other icons ... -->
                         </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
