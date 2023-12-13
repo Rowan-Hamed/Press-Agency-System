@@ -81,13 +81,13 @@ if(session_status() != PHP_SESSION_ACTIVE)
                             <img style="width: 90%; height: auto; border-radius: 8px; margin-right: 12px" src="../assets/photos/postPhoto/<?php echo $p->getUrlToPhoto() ?>" alt="">
                         <?php } ?>
                         <div class="tweet-icons">
-                            <a href="../controller/addLike.php?postid=<?php echo $p->getPostId() ?>" style="color: black; font-size: rem">
+                            <a href="../controller/addLike.php?postid=<?php echo $p->getPostId() ?>&loc=wall.php" style="color: black; font-size: rem">
                             <span class="material-icons-outlined">
                                 thumb_up
                             </span>
                             </a>
                             Likes: <?php echo $p->getLikesNum() ?>
-                            <a href="../controller/addDislike.php?postid=<?php echo $p->getPostId() ?>" style="color: black; font-size: rem">
+                            <a href="../controller/addDislike.php?postid=<?php echo $p->getPostId() ?>&loc=wall.php" style="color: black; font-size: rem">
                                 <span class="material-icons-outlined">
                                     thumb_down
                                 </span>
