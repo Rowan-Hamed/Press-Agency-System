@@ -1,6 +1,10 @@
 <?php 
 session_start();
 require_once ('../model/Post.php');
+if(!isset($_SESSION['userType']) || (strtolower($_SESSION['userType']) !== "admin" && strtolower($_SESSION['userType']) !== "editor")) {
+    header('Location: wall.php');
+    exit;
+}
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $postID = $_GET['postId'];
     $post = new Post($postID);
