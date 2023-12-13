@@ -35,7 +35,7 @@
             move_uploaded_file($_FILES["profile-image"]["tmp_name"], "../assets/photos/profilePhoto/" . $profile_image);
             $admin->updateUser($id, $first_name, $last_name, $role, $email, $password, $phone, $profile_image);
         }
-        header('Location: ../view/profile.php');
+        header('Location: ../view/addUser.php');
     }
 
 ?>
