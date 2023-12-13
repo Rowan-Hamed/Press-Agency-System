@@ -23,7 +23,11 @@ session_start();
     <title>Press Agency</title>
 </head>
 <body>
-<?php include("../assets/navBar/navBar.php"); ?>
+<?php include("../assets/navBar/navBar.php");
+        if(empty($data)) {
+            echo "<h1 style='text-align: center;'>There is no saved news";
+        }
+        ?>
     <main>
         <?php if(!empty($data)) { ?>
         <?php foreach($data as $post) { 

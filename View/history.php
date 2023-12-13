@@ -45,12 +45,13 @@ $data = $db->display("SELECT postId, ownerId FROM post WHERE ownerId = $id");
     <title>Press Agency</title>
 </head>
 <body>
-<?php include("../assets/navBar/navBar.php"); ?>
+<?php include("../assets/navBar/navBar.php"); $c = 0?>
 <main>
     <?php if (!empty($data)) { ?>
         <?php foreach ($data as $post) {
             $p = new Post($post['postId']);
             if($p->getStatus() != 1 && (!isset($_SESSION['id']) || $post['ownerId'] != $_SESSION['id'])) continue;
+            $c++;
             $color = 'rgba(170, 82, 82, 0.548)';
             if($p->getStatus() == 1)
                 $color = 'rgba(82, 170, 110, 0.548)';
@@ -98,7 +99,11 @@ $data = $db->display("SELECT postId, ownerId FROM post WHERE ownerId = $id");
             <br>
             <br>
         <?php } ?>
-    <?php } ?>
+    <?php } 
+    if($c == 0) {
+        echo "<h1 style='text-align: left;'>There is no news in history";
+    }
+    ?>
 </main>
 </body>
 </html>
