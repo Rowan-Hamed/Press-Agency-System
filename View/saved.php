@@ -71,7 +71,6 @@ session_start();
             </br>
         <?php } }?>
     </main>
-
     
 </body>
 </html>
