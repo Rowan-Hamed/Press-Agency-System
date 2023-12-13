@@ -92,15 +92,19 @@ if(isset($_SESSION['error-message'])) {
       display: block;
       margin-top: 15px;
     }
+    .error {
+      color: red;
+    }
   </style>
 </head>
 <body>
 
 <?php include("../assets/navBar/navBar.php"); ?>
+<script src="../assets/js/script.js"></script>
 
   <div class="signup-container">
     <h2>ADD USER</h2>
-    <form action="../controller/addUser_controller.php" method="post" enctype="multipart/form-data">
+    <form id="myForm" action="../controller/addUser_controller.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
       <div class="form-group horizontal">
         <div class="half-width">
           <label for="first-name">First Name</label>
@@ -138,7 +142,7 @@ if(isset($_SESSION['error-message'])) {
           <option value="Editor">Editor</option>
         </select>
       </div>
-      <button type="submit" name="submit" class="submit-btn">Add User</button>
+      <input type="submit" name="submit" class="submit-btn" value="Add User">
     </form>
   </div>
 </body>
