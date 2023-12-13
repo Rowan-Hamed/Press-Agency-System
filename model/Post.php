@@ -12,6 +12,7 @@ class Post {
     private $likesNum;
     private $dislikesNum;
     private $owner;
+    private $ownerID;
     private $ownerPhoto;
     private $urlToPhoto;
     public $postCon;
@@ -42,7 +43,8 @@ class Post {
         $sql = "SELECT fname, lname, urlToPhoto FROM users WHERE id = $row[ownerId]";
         $res = $this->postCon->select($sql);
         $this->ownerPhoto = $res['urlToPhoto'];
-        $this->owner = $name =  $res['fname'] . ' ' . $res['lname'];        ;
+        $this->ownerID=$row['ownerId'];
+        $this->owner = $res['fname'] . ' ' . $res['lname'];        ;
         
     }
 
@@ -114,6 +116,9 @@ class Post {
 
     public function getTitle() {
         return $this->title;
+    }
+    public function getOwnerId(){
+        return $this->ownerID;
     }
 
     public function getBody() {

@@ -71,7 +71,7 @@ if(session_status() != PHP_SESSION_ACTIVE)
                     <?php } ?>
                     <div class="feed-tweet-details">
                         <div class="tweeter-details">
-                            <a href="" class="tweeter-name"><?php echo $p->getOwner() ?></a>
+                            <a href="./history.php?id=<?php echo $p->getOwnerId() ?>" class="tweeter-name"><?php echo $p->getOwner() ?></a>
                             <h5 href="" class="tweeter-name"><?php echo $p->getCreationTime() ?></h5>
                         </div>
                         <div class="tweet-text">
