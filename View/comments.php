@@ -43,8 +43,8 @@
                         <h5 href="" class="tweeter-name"><?php echo $p->getCreationTime() ?></h5>
                     </div>
                     <div class="tweet-text">
-                        <h6><?php echo $p->getTitle() ?></h6>
-                        <p><?php echo $p->getBody() ?></p>
+                        <h6 style="color: black;"><?php echo $p->getTitle() ?></h6>
+                        <p style="color: black;"><?php echo $p->getBody() ?></p>
                     </div>
                     <?php if(!empty($p->getUrlToPhoto())) { ?>
                         <img style="width: 90%; height: auto; border-radius: 8px; margin-right: 12px" src="../assets/photos/postPhoto/<?php echo $p->getUrlToPhoto() ?>" alt="">
