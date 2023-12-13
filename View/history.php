@@ -1,18 +1,36 @@
 <?php
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-} else {
-    $id = 6;
-}
-
 if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-require_once('../model/db/DatabaseClass.php');
-require_once('../model/Post.php');
+$id = isset($_SESSION['id'])? $_SESSION['id']: 0;
+if(isset($_GET['id']))
+  $id = $_GET['id'];
 
+require_once ('../model/db/DatabaseClass.php');
 $db = new database();
+
+$sql = "SELECT * FROM users WHERE id = $id";
+
+$userData = $db->select($sql);
+
+if(!$userData) {
+  $_SESSION['message_Error'] = "please login first";
+  header('Location: login.php');
+  exit();
+}
+
+$fname = $userData['fname'];
+
+$lname = $userData['lname'];
+
+$email = $userData['email'];
+
+$phoneNum = $userData['phoneNum'];
+
+$urlToPhoto = $userData['urlToPhoto'];
+
+require_once('../model/Post.php');
 
 $data = $db->display("SELECT postId FROM post WHERE ownerId = $id");
 ?>
