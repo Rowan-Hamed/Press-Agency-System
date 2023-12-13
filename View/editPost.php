@@ -80,11 +80,11 @@ else{
         <div class="form-group">
             <select class="form-control form-control-lg" id="Type-Aritcal" name="Artical-role" required >
                 <?php 
-                echo '<option value="" >choose Type-Aritcal...</option>';
+                echo '<option value="" disabled >choose Type-Aritcal...</option>';
                 $postTypes = ['Sport', 'Cinema', 'Social', 'Political', 'Scientific', 'Economic', 'Health'];
                 
                 foreach ($postTypes as $type) {
-                    $selected = ( strtolower($post->getpostType())== strtolower($type)) ? 'selected' : '';
+                    $selected = ( strtolower($post->getpostType()) === strtolower($type)) ? 'selected' : '';
                     echo "<option $selected value=\"$type\">$type</option>";
                 }
                 

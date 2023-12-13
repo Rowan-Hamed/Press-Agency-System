@@ -7,7 +7,12 @@ if(session_status() != PHP_SESSION_ACTIVE)
 
     $db = new database();
 
-    $data = $db->display("SELECT postId FROM post WHERE status = 1");
+
+    $type = isset($_GET['type']) ? $_GET['type'] : '';
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
+    $date = isset($_GET['date']) ? $_GET['date'] : date("Y-m-d");
+
+    $data = $db->display("SELECT postId FROM post WHERE status = 1 AND postType LIKE '%$type%' AND creationTime >= '$date'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +26,36 @@ if(session_status() != PHP_SESSION_ACTIVE)
 </head>
 <body>
 <?php include("../assets/navBar/navBar.php"); ?>
+
+        <form action="./wall.php" method="get">
+            <input type="date" name="date" value="<?php echo date('Y-m-d', strtotime($date)) ?>">
+            <input type="text" hidden name="type" value="<?php echo $type ?>">
+            <input type="text" hidden name="search" value="<?php echo $search ?>">
+            <input type="submit" value="search">
+        </form>
+        <form action="./wall.php" method="get">
+            <input type="date" hidden name="date" value="<?php echo date('Y-m-d', strtotime($date)) ?>">
+            <input type="text" hidden name="type" value="<?php echo $type ?>">
+            <input type="search" name="search" value="<?php echo $search ?>">
+            <input type="submit" value="search">
+        </form>
+        <form action="./wall.php" method="get">
+            <input type="date" hidden name="date" value="<?php echo date('Y-m-d', strtotime($date)) ?>">
+            <select name="type">
+                <?php
+                echo '<option value="" '. (empty($type)? 'selected': '') .' >choose All Types</option>';
+                $postTypes = ['Sport', 'Cinema', 'Social', 'Political', 'Scientific', 'Economic', 'Health'];
+                
+                foreach ($postTypes as $t) {
+                    $selected = ( strtolower($type) === strtolower($t)) ? 'selected' : '';
+                    echo "<option $selected value=\"$t\">$t</option>";
+                }
+                
+                ?>
+            </select>
+            <input type="search" hidden name="search" value="<?php echo $search ?>">
+            <input type="submit" value="search">
+        </form>
     <main>
         <?php if(!empty($data)) { ?>
         <?php foreach($data as $post) { 
