@@ -50,8 +50,13 @@ $data = $db->display("SELECT postId FROM post WHERE ownerId = $id");
     <?php if (!empty($data)) { ?>
         <?php foreach ($data as $post) {
             $p = new Post($post['postId']);
+            $color = 'rgba(170, 82, 82, 0.548)';
+            if($p->getStatus() == 1)
+                $color = 'rgba(82, 170, 110, 0.548)';
+            else if($p->getStatus() == 0)
+                $color = 'background-color:rgba(48, 63, 75, 0.548)';
             ?>
-            <div class="main-feed">
+            <div class="main-feed" style="background-color: <?php echo $color?>">
                 <div class="feed-tweet">
                     <?php if (!empty($p->getOwnerPhoto())) { ?>
                         <img class="tweet-img" src="../assets/photos/profilePhoto/<?php echo $p->getOwnerPhoto() ?>" alt="">
