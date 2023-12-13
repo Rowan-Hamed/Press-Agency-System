@@ -23,6 +23,7 @@ if(session_status() != PHP_SESSION_ACTIVE)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href="../assets/css/wall.css" rel="stylesheet">
     <title>Press Agency</title>
     <style>
@@ -42,7 +43,6 @@ if(session_status() != PHP_SESSION_ACTIVE)
             margin: 10px;
             display: inline-block;
             text-align: left;
-            max-width: 400px;
             width: 100%;
             height: 15%;    
         }
@@ -82,27 +82,19 @@ if(session_status() != PHP_SESSION_ACTIVE)
             appearance: none;
             padding: 10px;
         }
+        form{
+            display: flex;
+            margin-left: 0;
+            margin-top: -20px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
     <?php include("../assets/navBar/navBar.php"); ?>
-
+    <div class="hah">
     <form action="./wall.php" method="get">
-        <input type="date" name="date" value="<?php echo date('Y-m-d', strtotime($date)) ?>">
-        <input type="text" hidden name="type" value="<?php echo $type ?>">
-        <input type="text" hidden name="search" value="<?php echo $search ?>">
-        <input type="submit" value="Search">
-    </form>
-
-    <form action="./wall.php" method="get">
-        <input type="date" hidden name="date" value="<?php echo date('Y-m-d', strtotime($date)) ?>">
-        <input type="text" hidden name="type" value="<?php echo $type ?>">
-        <input type="search" name="search" value="<?php echo $search ?>">
-        <input type="submit" value="Search">
-    </form>
-
-    <form action="./wall.php" method="get">
-        <input type="date" hidden name="date" value="<?php echo date('Y-m-d', strtotime($date)) ?>">
+        <input type="date"  name="date" value="<?php echo date('Y-m-d', strtotime($date)) ?>">
         <select name="type">
             <?php
             echo '<option value="" '. (empty($type)? 'selected': '') .' >Choose All Types</option>';
@@ -115,9 +107,13 @@ if(session_status() != PHP_SESSION_ACTIVE)
 
             ?>
         </select>
-        <input type="search" hidden name="search" value="<?php echo $search ?>">
-        <input type="submit" value="Search">
+        <input type="search" name="search" placeholder="Enter Editor name" value="<?php echo $search ?>">
+        <button type="submit" value="Search"><span style="width:40px" class="material-symbols-outlined">
+search
+</span></button>
     </form>
+    </div>
+
     <main>
         <?php if(!empty($data)) { ?>
         <?php foreach($data as $post) { 
