@@ -13,6 +13,7 @@ if(session_status() != PHP_SESSION_ACTIVE)
     $date = isset($_GET['date']) ? $_GET['date'] : date("Y-m-d");
 
     $data = $db->display("SELECT postId FROM post WHERE status = 1 AND postType LIKE '%$type%' AND creationTime >= '$date'");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +61,7 @@ if(session_status() != PHP_SESSION_ACTIVE)
         <?php if(!empty($data)) { ?>
         <?php foreach($data as $post) { 
             $p = new Post($post['postId']);
+            if(strpos(strtolower($p->getOwner()), strtolower($search)) === false) continue;
         ?>
             <div class="main-feed">
                 <div class="feed-tweet">

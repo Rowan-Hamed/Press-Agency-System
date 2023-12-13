@@ -42,7 +42,7 @@ class Post {
         $sql = "SELECT fname, lname, urlToPhoto FROM users WHERE id = $row[ownerId]";
         $res = $this->postCon->select($sql);
         $this->ownerPhoto = $res['urlToPhoto'];
-        $this->owner =$name =  $res['fname'] . ' ' . $res['lname'];        ;
+        $this->owner = $name =  $res['fname'] . ' ' . $res['lname'];        ;
         
     }
 
