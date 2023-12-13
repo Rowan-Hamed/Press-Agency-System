@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $viewer = new Viewer();
     $viewer->addLike($_SESSION['id'],$_GET['postid']);
     if(isset($_GET['loc']))
-        header('location:../View/comments.php?id='.$_GET['postid']);
+        header('location:../View/'.$_GET['loc'].'?id='.$_GET['postid']);
     else
         header('location:../View/wall.php?');
 
