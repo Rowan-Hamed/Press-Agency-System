@@ -1,6 +1,12 @@
 
 <?php
     session_start();
+
+if(!isset($_SESSION['id'])) {
+    $_SESSION['message_Error'] = "please login first";
+    header('Location: ../view/login.php');
+    exit;
+}
     require_once ('../model/db/DatabaseClass.php');
     $db = new database();
 
