@@ -103,11 +103,15 @@ if(isset($_SESSION['error-message'])) {
           border-radius: 20%;
           margin-bottom: 480px;
       }
+    .error {
+      color: red;
+    }
   </style>
   
 </head>
 <body>
 <?php include("../assets/navBar/navBar.php"); ?>
+<script src="../assets/js/script.js"></script>
     <div class="profile-image-container">
         <?php if(empty($_SESSION['urlToPhoto'])) { ?>
             <img style="width: 50%; height: 50%; border-radius: 50%" src="../assets/photos/style/unknown_person.jpg" alt="Profile Image">
@@ -119,9 +123,9 @@ if(isset($_SESSION['error-message'])) {
     <div class="profile-container">
         <h1>EDIT PROFILE</h1>
         
-        <form action="../controller/editProfile_controller.php" method="post" class="profile-form" enctype="multipart/form-data">
-            <label for="firstName">First Name</label>
-            <input type="text" value="<?php echo $fname ?>" name="fname" id="firstName" placeholder="Enter your first name" required>
+        <form action="../controller/editProfile_controller.php" method="post" class="profile-form" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <label for="first-name">First Name</label>
+            <input type="text" value="<?php echo $fname ?>" name="fname" id="first-name" placeholder="Enter your first name" required>
 
             <label for="lastName">Last Name</label>
             <input type="text" value="<?php echo $lname ?>" name="lname" id="lastName" placeholder="Enter your last name" required>
@@ -131,12 +135,15 @@ if(isset($_SESSION['error-message'])) {
             <?php }?>
             <label for="email">Email</label>
             <input type="text" value="<?php echo $email ?>" name="email" id="email" placeholder="Enter your email" required>
+            <span id="email-error" class="error"></span>
 
             <label for="phone">Phone Number</label>
             <input type="tel" value="<?php echo $phone ?>" name="phoneNum" id="phone" placeholder="Enter your phone number" required>
+            <span id="phone-error" class="error"></span>
 
             <label for="password">password</label>
             <input type="password" id="password" placeholder="Enter your password" name="password">
+            <span id="password-error" class="error"></span>
 
             <label for="profileImage">Profile Image</label>
             <input type="file" id="profileImage" accept="image/*" name="profile-image">
