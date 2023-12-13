@@ -21,6 +21,7 @@ if(session_status() != PHP_SESSION_ACTIVE)
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <link href="../assets/css/wall.css" rel="stylesheet">
     <title>Press Agency</title>
@@ -97,6 +98,11 @@ if(session_status() != PHP_SESSION_ACTIVE)
                                 <span class="material-icons-outlined">
                                     chat_bubble
                                 </span>
+                            </a>
+                            <a href="../controller/savedPost.php?postId=<?php echo $p->getPostID() ?>" style="color: black; font-size: rem">
+                            <span class="material-symbols-outlined">
+                                hotel_class
+                            </span>
                             </a>
                         </div>
                     </div>
