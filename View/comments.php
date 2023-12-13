@@ -74,6 +74,7 @@
                                 hotel_class
                             </span>
                             </a>
+                            
                     </div>
                 </div>
             </div>

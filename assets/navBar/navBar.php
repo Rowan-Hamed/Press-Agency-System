@@ -39,6 +39,7 @@
         <?php }
          else { ?>
             <li><a href="../view/login.php">Login</a></li>
+            <li><a href="../view/signup.php">sign up</a></li>
         <?php }?>
 
       </ul>
