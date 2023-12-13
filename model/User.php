@@ -1,6 +1,6 @@
 
 <?php 
-include ('../model/db/DatabaseClass.php');
+require_once ('../model/db/DatabaseClass.php');
 class User 
 {
     private  $id;
@@ -26,7 +26,7 @@ class User
         $_SESSION['id'] = $userData['id'];
         $this->id = $userData['id'];
 
-        $_SESSION['fName'] = $userData['fname'];
+        $_SESSION['fname'] = $userData['fname'];
         $this->fName = $userData['fname'];
 
         $_SESSION['lname'] = $userData['lname'];

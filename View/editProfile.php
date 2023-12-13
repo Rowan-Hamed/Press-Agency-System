@@ -1,5 +1,27 @@
 <?php
 session_start();
+
+if(!isset($_SESSION['id']))
+    header('Location: login.php');
+
+$fname = $_SESSION['fname'];
+$lname = $_SESSION['lname'];
+$email = $_SESSION['email'];
+$phone = $_SESSION['phoneNum'];
+$error = "";
+
+if(isset($_SESSION['error-message'])) {
+    $fname = $_SESSION['old-fname'];
+    $lname = $_SESSION['old-lname'];
+    $email = $_SESSION['old-email'];
+    $phone = $_SESSION['old-phone'];
+    $error = $_SESSION['error-message'];
+    unset($_SESSION['old-fname']);
+    unset($_SESSION['old-lname']);
+    unset($_SESSION['old-email']);
+    unset($_SESSION['old-phone']);
+    unset($_SESSION['error-message']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,32 +109,39 @@ session_start();
 <body>
 <?php include("../assets/navBar/navBar.php"); ?>
     <div class="profile-image-container">
-        <img src="../assets/photos/style/unknown_person.jpg" alt="Profile Image">
+        <?php if(empty($_SESSION['urlToPhoto'])) { ?>
+            <img style="width: 50%; height: 50%; border-radius: 50%" src="../assets/photos/style/unknown_person.jpg" alt="Profile Image">
+        <?php } 
+            else { ?>
+                <img style="width: 50%; height: 50%; border-radius: 50%" src="../assets/photos/profilePhoto/<?php echo $_SESSION['urlToPhoto'] ?>" alt="Profile Image">
+        <?php } ?>
     </div>
-
     <div class="profile-container">
-        <h1>PROFILE</h1>
-        <form class="profile-form">
+        <h1>EDIT PROFILE</h1>
+        
+        <form action="../controller/editProfile_controller.php" method="post" class="profile-form" enctype="multipart/form-data">
             <label for="firstName">First Name</label>
-            <input type="text" id="firstName" placeholder="Enter your first name" required>
+            <input type="text" value="<?php echo $fname ?>" name="fname" id="firstName" placeholder="Enter your first name" required>
 
             <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" placeholder="Enter your last name" required>
+            <input type="text" value="<?php echo $lname ?>" name="lname" id="lastName" placeholder="Enter your last name" required>
 
+            <?php if(!empty($error)) {?>
+                <h3 style = "color: red"> <?php echo $error?> </h3>
+            <?php }?>
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email" required>
+            <input type="text" value="<?php echo $email ?>" name="email" id="email" placeholder="Enter your email" required>
 
             <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" placeholder="Enter your phone number" required>
-
+            <input type="tel" value="<?php echo $phone ?>" name="phoneNum" id="phone" placeholder="Enter your phone number" required>
 
             <label for="password">password</label>
-            <input type="password" id="password" placeholder="Enter your password" required>
+            <input type="password" id="password" placeholder="Enter your password" name="password">
 
             <label for="profileImage">Profile Image</label>
-            <input type="file" id="profileImage" accept="image/*" required>
+            <input type="file" id="profileImage" accept="image/*" name="profile-image">
             <br>
-            <button type="submit">Save Profile</button>
+            <button type="submit" name="submit">Save Profile</button>
         </form>
     </div>
 

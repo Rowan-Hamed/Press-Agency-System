@@ -1,5 +1,5 @@
 <?php
-include ('../model/db/DatabaseClass.php');
+require_once ('../model/db/DatabaseClass.php');
 class Admin{
 
     public  $userCon;
@@ -29,6 +29,11 @@ class Admin{
     }
 
     public function updateUser($userId,$fName,$lname,$userType,$email,$password,$phoneNum,$urlToPhoto){
+
+            $sql = "SELECT * FROM users where email LIKE '$email' AND id NOT LIKE $userId";
+            if($this->userCon->check($sql) != 0)
+                return false;
+            
             $sql = "
                     UPDATE users
                     SET
@@ -42,6 +47,7 @@ class Admin{
                         id = $userId;
                 ";
             $res = $this->userCon->update($sql);
+            return true;
     }
 
     public function acceptPost($postId){

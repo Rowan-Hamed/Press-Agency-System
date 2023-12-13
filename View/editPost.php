@@ -69,7 +69,7 @@ else{
         <div class="form-group">
             <label for="title">Title:</label>
             <?php  
-            echo '<input   placeholder="' . $post->getTitle() .'" type="text" class="form-control" id="title" name="title" >';
+            echo '<input   value="' . $post->getTitle() .'" type="text" class="form-control" id="title" name="title" >';
             ?> 
         </div>
 
