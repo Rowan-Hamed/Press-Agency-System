@@ -25,39 +25,99 @@ if(session_status() != PHP_SESSION_ACTIVE)
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <link href="../assets/css/wall.css" rel="stylesheet">
     <title>Press Agency</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            display: inline-block;
+            text-align: left;
+            max-width: 400px;
+            width: 100%;
+            height: 15%;    
+        }
+
+        input, select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input[type="date"] {
+            appearance: none;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
-<?php include("../assets/navBar/navBar.php"); ?>
+    <?php include("../assets/navBar/navBar.php"); ?>
 
-        <form action="./wall.php" method="get">
-            <input type="date" name="date" value="<?php echo date('Y-m-d', strtotime($date)) ?>">
-            <input type="text" hidden name="type" value="<?php echo $type ?>">
-            <input type="text" hidden name="search" value="<?php echo $search ?>">
-            <input type="submit" value="search">
-        </form>
-        <form action="./wall.php" method="get">
-            <input type="date" hidden name="date" value="<?php echo date('Y-m-d', strtotime($date)) ?>">
-            <input type="text" hidden name="type" value="<?php echo $type ?>">
-            <input type="search" name="search" value="<?php echo $search ?>">
-            <input type="submit" value="search">
-        </form>
-        <form action="./wall.php" method="get">
-            <input type="date" hidden name="date" value="<?php echo date('Y-m-d', strtotime($date)) ?>">
-            <select name="type">
-                <?php
-                echo '<option value="" '. (empty($type)? 'selected': '') .' >choose All Types</option>';
-                $postTypes = ['Sport', 'Cinema', 'Social', 'Political', 'Scientific', 'Economic', 'Health'];
-                
-                foreach ($postTypes as $t) {
-                    $selected = ( strtolower($type) === strtolower($t)) ? 'selected' : '';
-                    echo "<option $selected value=\"$t\">$t</option>";
-                }
-                
-                ?>
-            </select>
-            <input type="search" hidden name="search" value="<?php echo $search ?>">
-            <input type="submit" value="search">
-        </form>
+    <form action="./wall.php" method="get">
+        <input type="date" name="date" value="<?php echo date('Y-m-d', strtotime($date)) ?>">
+        <input type="text" hidden name="type" value="<?php echo $type ?>">
+        <input type="text" hidden name="search" value="<?php echo $search ?>">
+        <input type="submit" value="Search">
+    </form>
+
+    <form action="./wall.php" method="get">
+        <input type="date" hidden name="date" value="<?php echo date('Y-m-d', strtotime($date)) ?>">
+        <input type="text" hidden name="type" value="<?php echo $type ?>">
+        <input type="search" name="search" value="<?php echo $search ?>">
+        <input type="submit" value="Search">
+    </form>
+
+    <form action="./wall.php" method="get">
+        <input type="date" hidden name="date" value="<?php echo date('Y-m-d', strtotime($date)) ?>">
+        <select name="type">
+            <?php
+            echo '<option value="" '. (empty($type)? 'selected': '') .' >Choose All Types</option>';
+            $postTypes = ['Sport', 'Cinema', 'Social', 'Political', 'Scientific', 'Economic', 'Health'];
+
+            foreach ($postTypes as $t) {
+                $selected = ( strtolower($type) === strtolower($t)) ? 'selected' : '';
+                echo "<option $selected value=\"$t\">$t</option>";
+            }
+
+            ?>
+        </select>
+        <input type="search" hidden name="search" value="<?php echo $search ?>">
+        <input type="submit" value="Search">
+    </form>
     <main>
         <?php if(!empty($data)) { ?>
         <?php foreach($data as $post) { 
