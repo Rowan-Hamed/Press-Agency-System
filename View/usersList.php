@@ -30,12 +30,12 @@ if(isset($_GET["id"])){
 }
 if($id === "1"){
     usort($users, function($a, $b) {
-        return $a['fname'] . ' ' . $a['lname'] < $b['fname'] . ' ' . $b['lname'];
+        return $a['fname'] . ' ' . $a['lname'] > $b['fname'] . ' ' . $b['lname'];
     });
 }
 else if ($id === "2"){
     usort($users, function($a, $b) {
-        return $a['fname'] . ' ' . $a['lname'] > $b['fname'] . ' ' . $b['lname'];
+        return $a['fname'] . ' ' . $a['lname'] < $b['fname'] . ' ' . $b['lname'];
     });
 }
 

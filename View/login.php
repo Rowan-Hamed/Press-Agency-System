@@ -122,7 +122,7 @@
     </form>
 
     <div class="signup-link">
-      <p>Don't have an account? <a href="#">Sign up</a></p>
+      <p>Don't have an account? <a href="./signup.php">Sign up</a></p>
     </div>
   </div>
 
