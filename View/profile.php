@@ -24,6 +24,8 @@ $lname = $userData['lname'];
 
 $email = $userData['email'];
 
+$role = $userData['userType'];
+
 $phoneNum = $userData['phoneNum'];
 
 $urlToPhoto = $userData['urlToPhoto'];
@@ -168,11 +170,11 @@ $urlToPhoto = $userData['urlToPhoto'];
             <div class="profile-buttons">
                 <?php if(isset($_SESSION['id']) && $_SESSION['id'] == $id) { ?>
                   <button onclick="window.location.href='./saved.php'">Saved Posts</button>
-                <?php }?>
+                <?php } if(strtolower($role) != "viewer") {?>
 
                 <button onclick="window.location.href='./history.php?id=<?php echo $id; ?>'">History</button>
-
-                <?php if(isset($_SESSION['id']) && $_SESSION['id'] == $id) { ?>
+                
+                <?php } if(isset($_SESSION['id']) && $_SESSION['id'] == $id) { ?>
                   <button onclick="window.location.href='./editProfile.php'">Edit Profile</button>
                 <?php }?>
             </div>
